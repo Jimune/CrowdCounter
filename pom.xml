@@ -11,7 +11,7 @@
     <packaging>war</packaging>
 
     <name>CrowdCounter</name>
-    <description>Count the crowd in the premisis</description>
+    <description>Count the crowd in the premises</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
