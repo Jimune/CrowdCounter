@@ -1,12 +1,14 @@
 package nl.yc.crowdcounter.controller;
 
+import nl.yc.crowdcounter.BCrypt;
 import nl.yc.crowdcounter.crudrepositories.UserCrudRepo;
+import nl.yc.crowdcounter.model.Accessability;
 import nl.yc.crowdcounter.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,41 +23,51 @@ public class LoginLogoutController {
     UserCrudRepo userrepo;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginHandle(HttpServletRequest request) {
+    public String loginView(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
 
-        if (session != null) {
+        if (session != null && session.getAttribute("user") != null) {
             return "redirect:/index";
         }
+
+        session = request.getSession();
+        model.addAttribute("error", session.getAttribute("error"));
+        session.setAttribute("error", null);
 
         return "login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginHandle(HttpServletRequest request,
-                              @RequestParam("username") String user,
-                              @RequestParam("password") String pass) {
-        HttpSession session = request.getSession(false);
-
-        if (session != null) {
-            pass = null;
-            user = null;
-
-            return "redirect:/index";
-        }
-
-        User u = userrepo.findByName(user);
-
-        if (u == null) {
-            request.setAttribute("error", "Username and password do not match!");
+    public String loginHandle(HttpServletRequest request) {
+        if (request.getParameter("username") == null || request.getParameter("username").isEmpty()
+                || request.getParameter("password") == null || request.getParameter("password").isEmpty()) {
+            request.getSession().setAttribute("error", "Username and password do not match!");
             return "redirect:/login";
         }
 
+        User u = userrepo.findByName(request.getParameter("username"));
+
+        if (u == null) {
+            request.getSession().setAttribute("error", "Username and password do not match!");
+            return "redirect:/login";
+        }
+
+        if (BCrypt.checkpw(request.getParameter("password"), u.getHash())) {
+            request.getSession().setAttribute("user", u);
+            request.getSession().removeAttribute("error");
+            return "redirect:/index";
+        }
+
+        request.getSession().setAttribute("error", "Username and password do not match!");
+        return "redirect:/login";
+    }
+
+    @RequestMapping("/logout")
+    @Accessability(requireLogin = true)
+    public String logoutHandle(HttpServletRequest request) {
         request.getSession().invalidate();
-        request.getSession();
 
         return "redirect:/index";
     }
-
 
 }

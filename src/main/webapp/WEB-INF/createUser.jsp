@@ -4,7 +4,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="/style.css" type="text/css">
-        <title>Login</title>
+        <title>Add new user</title>
     </head>
     <body>
         <div class="content center login-container">
@@ -14,6 +14,8 @@
                 <input class="align-right username" type="text" name="name" id="name"><br>
                 <label class="align-left password" for="pass">Password: </label>
                 <input class="align-right password" type="password" name="pass" id="pass"><br>
+                <label class="align-left confirm-password" for="confpass">Confirm Password: </label>
+                <input class="align-right confirm-password" type="password" name="confpass" id="confpass"><br>
                 <input class="align-right submit-button" type="submit" value="Login">
             </form>
         </div>
