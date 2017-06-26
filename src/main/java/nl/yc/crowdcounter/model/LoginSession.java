@@ -6,6 +6,7 @@ import java.util.Date;
 /**
  * Created by jim on 6/26/17.
  */
+@Entity
 public class LoginSession {
 
     private Long id;

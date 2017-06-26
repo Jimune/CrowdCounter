@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface UserCrudRepo extends CrudRepository<User, Long> {
 
-    User findByUsername(String username);
+    User findByName(String username);
 
 }

@@ -1,13 +1,11 @@
 package nl.yc.crowdcounter.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by jim on 6/26/17.
  */
+@Entity
 public class Permission {
 
     private Long id;

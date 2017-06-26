@@ -44,7 +44,7 @@ public class LoginLogoutController {
             return "redirect:/index";
         }
 
-        User u = userrepo.findByUsername(user);
+        User u = userrepo.findByName(user);
 
         if (u == null) {
             request.setAttribute("error", "Username and password do not match!");

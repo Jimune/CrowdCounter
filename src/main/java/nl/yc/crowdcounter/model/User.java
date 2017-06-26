@@ -52,8 +52,8 @@ public class User {
         this.permissions = permissions;
     }
 
-    @OneToMany
     @OrderBy("login DESC")
+    @OneToMany
     public List<LoginSession> getSessions() {
         return sessions;
     }
