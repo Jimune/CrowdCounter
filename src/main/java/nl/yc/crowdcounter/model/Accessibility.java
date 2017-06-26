@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface Accessability {
+public @interface Accessibility {
 
     boolean requireLogin() default false;
     String[] requiredPermissions() default {};

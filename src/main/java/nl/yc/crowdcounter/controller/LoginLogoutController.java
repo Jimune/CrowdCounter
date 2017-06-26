@@ -2,7 +2,7 @@ package nl.yc.crowdcounter.controller;
 
 import nl.yc.crowdcounter.BCrypt;
 import nl.yc.crowdcounter.crudrepositories.UserCrudRepo;
-import nl.yc.crowdcounter.model.Accessability;
+import nl.yc.crowdcounter.model.Accessibility;
 import nl.yc.crowdcounter.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,7 +63,7 @@ public class LoginLogoutController {
     }
 
     @RequestMapping("/logout")
-    @Accessability(requireLogin = true)
+    @Accessibility(requireLogin = true)
     public String logoutHandle(HttpServletRequest request) {
         request.getSession().invalidate();
 
