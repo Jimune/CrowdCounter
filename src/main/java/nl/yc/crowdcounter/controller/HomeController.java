@@ -1,7 +1,5 @@
 package nl.yc.crowdcounter.controller;
 
-
-import nl.yc.crowdcounter.model.LoginSession;
 import nl.yc.crowdcounter.model.Permission;
 import nl.yc.crowdcounter.model.User;
 import org.springframework.stereotype.Controller;
@@ -12,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Jim on 23 Jun 17.
@@ -40,7 +38,7 @@ public class HomeController {
         u.setName("Test");
         u.setHash("f928nf2iif298ejklsdlcnoisnefn0392i3dim");
 
-        List<Permission> perms = new ArrayList<Permission>();
+        Set<Permission> perms = new HashSet<Permission>();
         Permission p1 = new Permission();
         p1.setDescription("Access to create a new user");
         p1.setPermission("add_user");
@@ -51,7 +49,6 @@ public class HomeController {
         perms.add(p2);
 
         u.setPermissions(perms);
-        u.setSessions(new ArrayList<LoginSession>());
         request.getSession().setAttribute("user", u);
 
         return "redirect:/index";

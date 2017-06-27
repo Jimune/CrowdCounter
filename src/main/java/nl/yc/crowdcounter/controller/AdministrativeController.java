@@ -2,7 +2,6 @@ package nl.yc.crowdcounter.controller;
 
 import nl.yc.crowdcounter.BCrypt;
 import nl.yc.crowdcounter.crudrepositories.PermissionCrudRepo;
-import nl.yc.crowdcounter.crudrepositories.SessionCrudRepo;
 import nl.yc.crowdcounter.crudrepositories.UserCrudRepo;
 import nl.yc.crowdcounter.model.Accessibility;
 import nl.yc.crowdcounter.model.User;
@@ -23,8 +22,8 @@ public class AdministrativeController {
 
     @Autowired
     UserCrudRepo userRepo;
+    @Autowired
     PermissionCrudRepo permRepo;
-    SessionCrudRepo sessRepo;
 
     @RequestMapping(value = "/admin.createAccount", method = RequestMethod.GET)
     @Accessibility(requireLogin = true, requiredPermissions = {"add_user"})

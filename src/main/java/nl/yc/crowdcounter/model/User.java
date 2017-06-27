@@ -3,7 +3,7 @@ package nl.yc.crowdcounter.model;
 import nl.yc.crowdcounter.util.Util;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by jim on 6/26/17.
@@ -14,8 +14,8 @@ public class User {
     private Long id;
     private String name;
     private String hash;
-    private List<Permission> permissions;
-    private List<LoginSession> sessions;
+    private Set<Permission> permissions;
+    private Set<LoginSession> sessions;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -45,22 +45,22 @@ public class User {
         this.hash = hash;
     }
 
-    @OneToMany
-    public List<Permission> getPermissions() {
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Set<Permission> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(List<Permission> permissions) {
+    public void setPermissions(Set<Permission> permissions) {
         this.permissions = permissions;
     }
 
     @OrderBy("login DESC")
-    @OneToMany
-    public List<LoginSession> getSessions() {
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Set<LoginSession> getSessions() {
         return sessions;
     }
 
-    public void setSessions(List<LoginSession> sessions) {
+    public void setSessions(Set<LoginSession> sessions) {
         this.sessions = sessions;
     }
 

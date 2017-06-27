@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by jim on 6/26/17.
@@ -37,7 +38,7 @@ public class PermissionFilter extends HandlerInterceptorAdapter {
                 if (session != null && session.getAttribute("user") != null) {
                     if (a.requiredPermissions().length > 0) {
                         User u = (User) session.getAttribute("user");
-                        List<Permission> permissionsObj = u.getPermissions();
+                        Set<Permission> permissionsObj = u.getPermissions();
 
                         if (permissionsObj != null && !permissionsObj.isEmpty()) {
                             List<String> permissions = new ArrayList<>();

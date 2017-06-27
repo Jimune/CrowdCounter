@@ -1,8 +1,10 @@
 package nl.yc.crowdcounter.controller;
 
 import nl.yc.crowdcounter.BCrypt;
+import nl.yc.crowdcounter.crudrepositories.SessionCrudRepo;
 import nl.yc.crowdcounter.crudrepositories.UserCrudRepo;
 import nl.yc.crowdcounter.model.Accessibility;
+import nl.yc.crowdcounter.model.LoginSession;
 import nl.yc.crowdcounter.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,9 @@ import javax.servlet.http.HttpSession;
 public class LoginLogoutController {
 
     @Autowired
-    UserCrudRepo userrepo;
+    UserCrudRepo userRepo;
+    @Autowired
+    SessionCrudRepo sessRepo;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginView(HttpServletRequest request, Model model) {
@@ -48,7 +52,7 @@ public class LoginLogoutController {
             return "redirect:/login";
         }
 
-        User u = userrepo.findByName(name);
+        User u = userRepo.findByName(name);
 
         if (u == null) {
             request.getSession().setAttribute("error", "Username and password do not match!");
@@ -56,6 +60,9 @@ public class LoginLogoutController {
         }
 
         if (BCrypt.checkpw(pass, u.getHash())) {
+            LoginSession session = new LoginSession();
+            session.setIp(request.getRemoteAddr());
+
             request.getSession().setAttribute("user", u);
             request.getSession().setAttribute("error", null);
             return "redirect:/index";
