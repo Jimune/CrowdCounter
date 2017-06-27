@@ -7,6 +7,8 @@
         <title>Login</title>
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
+
         <div class="content center login-container">
             <c:if test="${not empty error}"><div class="error">${error}</div><br></c:if>
             <form method="post" action="login">

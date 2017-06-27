@@ -54,7 +54,7 @@ public class LoginLogoutController {
 
         if (BCrypt.checkpw(request.getParameter("password"), u.getHash())) {
             request.getSession().setAttribute("user", u);
-            request.getSession().removeAttribute("error");
+            request.getSession().setAttribute("error", null);
             return "redirect:/index";
         }
 

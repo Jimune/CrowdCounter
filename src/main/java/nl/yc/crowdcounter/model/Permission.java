@@ -1,5 +1,7 @@
 package nl.yc.crowdcounter.model;
 
+import nl.yc.crowdcounter.util.Util;
+
 import javax.persistence.*;
 
 /**
@@ -37,5 +39,10 @@ public class Permission {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return Util.build("Permission:{id:", id, ",permission:", permission, ",description:", description, "}");
     }
 }

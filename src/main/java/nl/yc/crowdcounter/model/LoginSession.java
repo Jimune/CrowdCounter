@@ -1,5 +1,7 @@
 package nl.yc.crowdcounter.model;
 
+import nl.yc.crowdcounter.util.Util;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -50,5 +52,10 @@ public class LoginSession {
 
     public void setLogout(Date logout) {
         this.logout = logout;
+    }
+
+    @Override
+    public String toString() {
+        return Util.build("LoginSession:{id:", id, ",ip:", ip, ",login:", login, "logout:", logout,"}");
     }
 }

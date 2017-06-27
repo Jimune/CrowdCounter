@@ -1,5 +1,7 @@
 package nl.yc.crowdcounter.model;
 
+import nl.yc.crowdcounter.util.Util;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -60,5 +62,17 @@ public class User {
 
     public void setSessions(List<LoginSession> sessions) {
         this.sessions = sessions;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder permBuilder = new StringBuilder();
+        if (permissions != null) permissions.forEach((perm) -> permBuilder.append(",").append(perm));
+        StringBuilder sessBuilder = new StringBuilder();
+        if (sessions != null) sessions.forEach((sess) -> sessBuilder.append(",").append(sess));
+
+        return Util.build("User:{id:", id, ",name:", name, ",hash:", hash,
+                ",permissions:[", permBuilder.toString().replaceFirst(",", ""),
+                "],sessions:[", sessBuilder.toString().replaceFirst(",", ""), "]}");
     }
 }

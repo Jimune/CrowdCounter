@@ -1,6 +1,5 @@
 package nl.yc.crowdcounter;
 
-import nl.yc.crowdcounter.filter.LoginFilter;
 import nl.yc.crowdcounter.filter.PermissionFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,11 +11,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 public class Configurator extends WebMvcConfigurerAdapter {
-
-    @Bean
-    public LoginFilter loginFilter() {
-        return new LoginFilter();
-    }
 
     @Bean
     public PermissionFilter permissionFilter() {
