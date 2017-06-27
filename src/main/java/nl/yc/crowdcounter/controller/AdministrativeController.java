@@ -27,7 +27,7 @@ public class AdministrativeController {
 
     @RequestMapping(value = "/admin.createAccount", method = RequestMethod.GET)
     @Accessibility(requireLogin = true, requiredPermissions = {"add_user"})
-    public String createAccount(HttpServletRequest request, Model model) {
+    public String createAccountView(HttpServletRequest request, Model model) {
         model.addAttribute("user", request.getSession().getAttribute("user"));
         model.addAttribute("error", request.getSession().getAttribute("error"));
         request.getSession().setAttribute("error", null);
@@ -66,5 +66,15 @@ public class AdministrativeController {
         }
 
         return "redirect:/admin.createAccount";
+    }
+
+    @RequestMapping(value = "/admin.modifyUser", method = RequestMethod.GET)
+    @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
+    public String modifyUserView(HttpServletRequest request, Model model) {
+        model.addAttribute("user", request.getSession().getAttribute("user"));
+        model.addAttribute("error", request.getSession().getAttribute("error"));
+        request.getSession().setAttribute("error", null);
+
+        return "modifyUser";
     }
 }
