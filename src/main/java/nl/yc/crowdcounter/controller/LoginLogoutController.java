@@ -39,20 +39,23 @@ public class LoginLogoutController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginHandle(HttpServletRequest request) {
-        if (request.getParameter("username") == null || request.getParameter("username").isEmpty()
-                || request.getParameter("password") == null || request.getParameter("password").isEmpty()) {
+        String name = request.getParameter("name");
+        String pass = request.getParameter("pass");
+
+        if (name == null || name.isEmpty()
+                || pass == null || pass.isEmpty()) {
             request.getSession().setAttribute("error", "Username and password do not match!");
             return "redirect:/login";
         }
 
-        User u = userrepo.findByName(request.getParameter("username"));
+        User u = userrepo.findByName(name);
 
         if (u == null) {
             request.getSession().setAttribute("error", "Username and password do not match!");
             return "redirect:/login";
         }
 
-        if (BCrypt.checkpw(request.getParameter("password"), u.getHash())) {
+        if (BCrypt.checkpw(pass, u.getHash())) {
             request.getSession().setAttribute("user", u);
             request.getSession().setAttribute("error", null);
             return "redirect:/index";

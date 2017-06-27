@@ -1,8 +1,13 @@
 package nl.yc.crowdcounter.controller;
 
+import nl.yc.crowdcounter.BCrypt;
+import nl.yc.crowdcounter.crudrepositories.PermissionCrudRepo;
+import nl.yc.crowdcounter.crudrepositories.SessionCrudRepo;
 import nl.yc.crowdcounter.crudrepositories.UserCrudRepo;
 import nl.yc.crowdcounter.model.Accessibility;
+import nl.yc.crowdcounter.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +22,9 @@ import javax.servlet.http.HttpServletRequest;
 public class AdministrativeController {
 
     @Autowired
-    UserCrudRepo repo;
+    UserCrudRepo userRepo;
+    PermissionCrudRepo permRepo;
+    SessionCrudRepo sessRepo;
 
     @RequestMapping(value = "/admin.createAccount", method = RequestMethod.GET)
     @Accessibility(requireLogin = true, requiredPermissions = {"add_user"})
@@ -32,14 +39,31 @@ public class AdministrativeController {
     @RequestMapping(value = "/admin.createAccount", method = RequestMethod.POST)
     @Accessibility(requireLogin = true, requiredPermissions = {"add_user"})
     public String createAccountHandle(HttpServletRequest request) {
-        String name = request.getParameter("username");
-        String pass = request.getParameter("password");
-        String passconf = request.getParameter("passconf");
+        String name = request.getParameter("name");
+        String pass = request.getParameter("pass");
+        String passconf = request.getParameter("confpass");
 
         if (name == null || name.isEmpty()
                 || pass == null || pass.isEmpty()
                 || passconf == null || passconf.isEmpty()) {
-            
+            request.getSession().setAttribute("error", "Please fill in all fields!");
+
+            return "redirect:/admin.createAccount";
+        } else if (!pass.equals(passconf)) {
+            request.getSession().setAttribute("error", "Passwords do not match!");
+
+            return "redirect:/admin.createAccount";
+        }
+
+        User u = new User();
+        u.setName(name);
+        u.setHash(BCrypt.hashpw(pass, BCrypt.gensalt()));
+
+        try {
+            userRepo.save(u);
+            request.getSession().setAttribute("error", "New user successfully added!");
+        } catch(DataIntegrityViolationException dive) {
+            request.getSession().setAttribute("error", "Username already exists!");
         }
 
         return "redirect:/admin.createAccount";
