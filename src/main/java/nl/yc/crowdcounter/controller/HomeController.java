@@ -47,6 +47,11 @@ public class HomeController {
         p2.setDescription("Access to admin commands");
         p2.setPermission("can_admin");
         perms.add(p2);
+        Permission p3 = new Permission();
+        p3.setDescription("Access to modify users");
+        p3.setPermission("modify_user");
+        perms.add(p3);
+
 
         u.setPermissions(perms);
         request.getSession().setAttribute("user", u);

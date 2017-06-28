@@ -1,11 +1,11 @@
 package nl.yc.crowdcounter.controller;
 
-import nl.yc.crowdcounter.BCrypt;
 import nl.yc.crowdcounter.crudrepositories.SessionCrudRepo;
 import nl.yc.crowdcounter.crudrepositories.UserCrudRepo;
 import nl.yc.crowdcounter.model.Accessibility;
 import nl.yc.crowdcounter.model.LoginSession;
 import nl.yc.crowdcounter.model.User;
+import nl.yc.crowdcounter.util.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
