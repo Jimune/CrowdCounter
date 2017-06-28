@@ -1,0 +1,113 @@
+a {
+	display: block;
+	text-decoration: none;
+	padding: 5px 15px;
+	color: #000;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	background: #ffffff;
+	float: left;
+}
+
+li {
+	float: left;
+	display: inline;
+	position: relative;
+	width: 150px;
+	list-style: none;
+}
+
+li.last {
+	width: 200px;
+	right: 0px;
+}
+
+ul ul {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	background: #cccccc;
+	display: none;
+}
+
+ul ul ul {
+	left: 100%;
+	top: 0;
+	background: #999999;
+}
+
+li:hover >ul {
+	cursor: pointer;
+	display: block;
+}
+
+.header {
+    position: absolute;
+    width: 80%;
+    left: 10%;
+}
+
+.footer {
+	position: absolute;
+	height: 80px;
+	width: 80%;
+	left: 10%;
+	top: 100%;
+	transform: translateY(-100%);
+}
+
+.footer-section {
+	float: left;
+	display: inline;
+	position: float;
+}
+
+.center {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.login-container {
+	width: 300px;
+}
+
+.align-left {
+	position: absolute;
+	left: 0px;
+}
+
+.align-right {
+	position: absolute;
+	right: 0px;
+}
+
+.submit-button {
+	margin-top: 20px;
+	border: none;
+	color: black;
+	width: 50px;
+	height: 25px;
+	background-color: rgba(50,255,50,0.8);
+}
+
+.submit-button:hover {
+	border: 1px solid rgba(50, 255, 50, 0.8);
+	background-color: rgba(50, 245, 50, 0.8);
+}
+
+.username {
+
+}
+
+.password {
+    margin-top: 5px;
+}
+
+.confirm-password {
+    margin-top: 10px;
+}
