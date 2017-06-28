@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by jim on 6/26/17.
@@ -60,11 +64,21 @@ public class LoginLogoutController {
         }
 
         if (BCrypt.checkpw(pass, u.getHash())) {
-            LoginSession session = new LoginSession();
-            session.setIp(request.getRemoteAddr());
+            Set<LoginSession> sessions = u.getSessions();
+            LoginSession s = new LoginSession();
+            s.setLogin(new Date(System.currentTimeMillis()));
+
+            s.setIp(request.getRemoteAddr());
+            sessRepo.save(s);
 
             request.getSession().setAttribute("user", u);
             request.getSession().setAttribute("error", null);
+
+            sessions.add(s);
+            u.setSessions(sessions);
+
+            userRepo.save(u);
+
             return "redirect:/index";
         }
 
@@ -75,6 +89,14 @@ public class LoginLogoutController {
     @RequestMapping("/logout")
     @Accessibility(requireLogin = true)
     public String logoutHandle(HttpServletRequest request) {
+
+        User u = (User) request.getSession().getAttribute("user");
+        Long id = u.getId();
+        LoginSession loginSession = userRepo.findOne(id).getSessions().iterator().next();
+
+        loginSession.setLogout(new Date(System.currentTimeMillis()));
+        sessRepo.save(loginSession);
+        userRepo.save(u);
         request.getSession().invalidate();
 
         return "redirect:/index";
