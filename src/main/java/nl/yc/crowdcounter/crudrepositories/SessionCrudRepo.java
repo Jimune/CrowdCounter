@@ -7,4 +7,6 @@ import org.springframework.data.repository.CrudRepository;
  * Created by jim on 6/27/17.
  */
 public interface SessionCrudRepo extends CrudRepository<LoginSession, Long> {
+
+
 }
