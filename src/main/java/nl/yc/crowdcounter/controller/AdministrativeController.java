@@ -4,6 +4,7 @@ import nl.yc.crowdcounter.BCrypt;
 import nl.yc.crowdcounter.crudrepositories.PermissionCrudRepo;
 import nl.yc.crowdcounter.crudrepositories.UserCrudRepo;
 import nl.yc.crowdcounter.model.Accessibility;
+import nl.yc.crowdcounter.model.LoginSession;
 import nl.yc.crowdcounter.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Created by jim on 6/26/17.

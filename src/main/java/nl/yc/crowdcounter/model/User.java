@@ -45,7 +45,7 @@ public class User {
         this.hash = hash;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER)
     public Set<Permission> getPermissions() {
         return permissions;
     }
@@ -55,7 +55,7 @@ public class User {
     }
 
     @OrderBy("login DESC")
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER)
     public Set<LoginSession> getSessions() {
         return sessions;
     }
