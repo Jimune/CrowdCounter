@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
-import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -64,6 +62,7 @@ public class LoginLogoutController {
         }
 
         if (BCrypt.checkpw(pass, u.getHash())) {
+
             Set<LoginSession> sessions = u.getSessions();
             LoginSession s = new LoginSession();
             s.setLogin(new Date(System.currentTimeMillis()));

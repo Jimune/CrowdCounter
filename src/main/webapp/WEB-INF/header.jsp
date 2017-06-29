@@ -35,6 +35,13 @@
                 </ul>
             </li>
         </c:if>
+        <c:if test="${not empty user}">
+            <li class="last"><a href="#">Graph Options</a>
+                <ul>
+                    <li><a href="/graphMaker">Create a new graph</a></li>
+                </ul>
+            </li>
+        </c:if>
         <c:if test="${empty user}">
            	<li class="last"><a href="/login">Log in</a></li>
         </c:if>
