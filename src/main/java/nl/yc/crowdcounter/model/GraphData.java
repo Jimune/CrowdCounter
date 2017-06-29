@@ -1,9 +1,6 @@
 package nl.yc.crowdcounter.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -14,7 +11,16 @@ public class GraphData {
     private Long id;
     private String address;
     private String location;
+    private String signalStrength;
     private Date timestamp;
+
+    public String getSignalStrength() {
+        return signalStrength;
+    }
+
+    public void setSignalStrength(String signalStrength) {
+        this.signalStrength = signalStrength;
+    }
 
     public String getLocation() {
         return location;
@@ -24,6 +30,8 @@ public class GraphData {
         this.location = location;
     }
 
+    @Column(columnDefinition = "DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getTimestamp() {
         return timestamp;
     }
