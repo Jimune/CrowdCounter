@@ -62,6 +62,7 @@ public class LoginLogoutController {
         }
 
         if (BCrypt.checkpw(pass, u.getHash())) {
+
             Set<LoginSession> sessions = u.getSessions();
             LoginSession s = new LoginSession();
             s.setLogin(new Date(System.currentTimeMillis()));
