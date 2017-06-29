@@ -45,7 +45,11 @@ public class User {
         this.hash = hash;
     }
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OrderBy("id ASC")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_permissions",
+            joinColumns = {@JoinColumn(name = "User_id")},
+            inverseJoinColumns = {@JoinColumn(name = "Permission_id")})
     public Set<Permission> getPermissions() {
         return permissions;
     }

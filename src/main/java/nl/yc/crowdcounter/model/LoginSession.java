@@ -3,7 +3,6 @@ package nl.yc.crowdcounter.model;
 import nl.yc.crowdcounter.util.Util;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**

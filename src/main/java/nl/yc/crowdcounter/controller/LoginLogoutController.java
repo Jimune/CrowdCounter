@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
-import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -89,7 +87,6 @@ public class LoginLogoutController {
     @RequestMapping("/logout")
     @Accessibility(requireLogin = true)
     public String logoutHandle(HttpServletRequest request) {
-
         User u = (User) request.getSession().getAttribute("user");
         Long id = u.getId();
         LoginSession loginSession = userRepo.findOne(id).getSessions().iterator().next();
