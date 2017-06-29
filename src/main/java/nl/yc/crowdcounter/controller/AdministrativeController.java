@@ -76,8 +76,7 @@ public class AdministrativeController {
     @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
     @ResponseBody
     public List<User> modifyUserView(@RequestParam(defaultValue = "SomeRandomGibberishToFilter") String name) {
-        List<User> temp = new ArrayList<User>();
-
+        List<User> temp = new ArrayList<>();
         if (name.equals("SomeRandomGibberishToFilter")) return temp;
 
         for (User u : userRepo.findAllLikeName(name)) temp.add(u);
