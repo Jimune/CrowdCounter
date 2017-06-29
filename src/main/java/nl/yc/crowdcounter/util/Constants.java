@@ -9,5 +9,4 @@ public class Constants {
 
     public static final String MAC_CHARS = "0123456789ABCDEF";
     public static final Random RANDOM = new Random();
-
 }

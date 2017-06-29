@@ -2,12 +2,14 @@
  * Created by yvo.romp on 29/06/2017.
  */
 getData();
+var chart;
+chart.title.text = "Zwolle";
 
 function getData() {
-    Highcharts.chart('container', {
+    chart = Highcharts.chart('container', {
         /* chartheader info */
         chart: {
-            type: 'column'
+            type: 'line'
         },
         title: {
             text: 'connected Devices over Time'
@@ -18,9 +20,9 @@ function getData() {
 
         /* axis declaration */
         xAxis: {
-            categories: [
-                'timeperiod'
-            ],
+            title: {
+                text: 'timeperiod'
+            },
             crosshair: true
         },
         yAxis: {

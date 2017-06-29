@@ -55,6 +55,10 @@ public class HomeController {
         p4.setDescription("Access to create permissions");
         p4.setPermission("create_perm");
         perms.add(p4);
+        Permission p5 = new Permission();
+        p5.setDescription("Access to create permissions");
+        p5.setPermission("change_pass");
+        perms.add(p5);
 
         u.setPermissions(perms);
         request.getSession().setAttribute("user", u);

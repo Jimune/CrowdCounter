@@ -1,5 +1,7 @@
 package nl.yc.crowdcounter.util;
 
+import nl.yc.crowdcounter.model.GraphData;
+
 /**
  * Created by jim on 6/27/17.
  */
@@ -26,5 +28,9 @@ public class Util {
         }
 
         return sb.toString().replaceFirst(":", "");
+    }
+
+    public static GraphData getRandomData(int time) {
+        return null;
     }
 }
