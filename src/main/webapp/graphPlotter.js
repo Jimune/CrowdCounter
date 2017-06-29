@@ -3,7 +3,6 @@
  */
 getData();
 var chart;
-chart.title.text = "Zwolle";
 
 function getData() {
     chart = Highcharts.chart('container', {

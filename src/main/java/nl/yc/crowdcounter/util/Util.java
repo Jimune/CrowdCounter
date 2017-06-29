@@ -1,6 +1,7 @@
 package nl.yc.crowdcounter.util;
 
-import nl.yc.crowdcounter.model.GraphData;
+import java.util.Date;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by jim on 6/27/17.
@@ -30,7 +31,19 @@ public class Util {
         return sb.toString().replaceFirst(":", "");
     }
 
-    public static GraphData getRandomData(int time) {
-        return null;
+    public static String getRandomLocation() {
+        String location = Constants.LOCATIONS[Constants.RANDOM.nextInt(Constants.LOCATIONS.length)];
+        return location;
     }
+
+    public static String getRandomStrenght() {
+        String strength = Constants.STRENGTHS[Constants.RANDOM.nextInt(Constants.STRENGTHS.length)];
+        return strength;
+    }
+
+    public static Date getRandomDate() {
+        Date date = new Date(System.currentTimeMillis() - ThreadLocalRandom.current().nextLong(20000000000L));
+        return date;
+    }
+
 }
