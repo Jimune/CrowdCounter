@@ -51,16 +51,12 @@ public class PermissionFilter extends HandlerInterceptorAdapter {
                                     return false;
                                 }
                             }
-
-                            return true;
                         } else {
                             response.setStatus(403);
 
                             return false;
                         }
                     }
-
-                    return true;
                 } else {
                     try {
                         response.sendRedirect("/login");
@@ -73,6 +69,27 @@ public class PermissionFilter extends HandlerInterceptorAdapter {
                 }
             }
         }
+
+        request.setAttribute("error", null);
+        request.setAttribute("success", null);
+
+        if (request.getSession().getAttribute("error") != null &&
+                request.getSession().getAttribute("error") instanceof String &&
+                !((String) request.getSession().getAttribute("error")).isEmpty()) {
+            request.setAttribute("error", request.getSession().getAttribute("error"));
+        }
+        if (request.getSession().getAttribute("success") != null &&
+                request.getSession().getAttribute("success") instanceof String &&
+                !((String) request.getSession().getAttribute("success")).isEmpty()) {
+            request.setAttribute("success", request.getSession().getAttribute("success"));
+        }
+        if (request.getSession().getAttribute("user") != null &&
+                request.getSession().getAttribute("user") instanceof User) {
+            request.setAttribute("user", request.getSession().getAttribute("user"));
+        }
+
+        request.getSession().setAttribute("error", null);
+        request.getSession().setAttribute("success", null);
 
         return true;
     }

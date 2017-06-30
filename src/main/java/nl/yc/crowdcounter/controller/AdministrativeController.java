@@ -6,6 +6,7 @@ import nl.yc.crowdcounter.model.Accessibility;
 import nl.yc.crowdcounter.model.Permission;
 import nl.yc.crowdcounter.model.User;
 import nl.yc.crowdcounter.util.BCrypt;
+import nl.yc.crowdcounter.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -28,11 +29,7 @@ public class AdministrativeController {
 
     @RequestMapping(value = "/admin.createAccount", method = RequestMethod.GET)
     @Accessibility(requireLogin = true, requiredPermissions = {"add_user"})
-    public String createAccountView(HttpServletRequest request, Model model) {
-        model.addAttribute("user", request.getSession().getAttribute("user"));
-        model.addAttribute("error", request.getSession().getAttribute("error"));
-        request.getSession().setAttribute("error", null);
-
+    public String createAccountView() {
         return "createUser";
     }
 
@@ -61,7 +58,7 @@ public class AdministrativeController {
 
         try {
             userRepo.save(u);
-            request.getSession().setAttribute("error", "New user successfully added!");
+            request.getSession().setAttribute("success", "New user successfully added!");
         } catch(DataIntegrityViolationException dive) {
             request.getSession().setAttribute("error", "Username already exists!");
         }
@@ -83,8 +80,8 @@ public class AdministrativeController {
         if (users.size() == 0 || users.isEmpty()) return "<tr><td>No results found!</td></tr>";
 
         for (User u : users) {
-            sb.append("<tr><td><a href=\"/admin.modifyUser.").append(u.getId()).append("\">")
-                    .append(u.getName()).append("</a></td></tr>");
+            sb.append("<a href=\"/admin.modifyUser.").append(u.getId()).append("\" class=\"list-group-item\">")
+                    .append("<p class=\"list-group-item-text\">").append(u.getName()).append("</p>").append("</a>");
         }
 
         return sb.toString();
@@ -92,20 +89,23 @@ public class AdministrativeController {
 
     @RequestMapping(value = "/admin.modifyUser.select", method = RequestMethod.GET)
     @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
-    public String modifyUserView(HttpServletRequest request, Model model) {
-        model.addAttribute("user", request.getSession().getAttribute("user"));
-        model.addAttribute("error", request.getSession().getAttribute("error"));
-        request.getSession().setAttribute("error", null);
-
+    public String modifyUserView() {
         return "selectUser";
     }
 
     @RequestMapping(value = "/admin.modifyUser.{id}", method = RequestMethod.GET)
     @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
-    public String modifyUserSelectedView(HttpServletRequest request, Model model, @PathVariable String id) {
-        model.addAttribute("user", request.getSession().getAttribute("user"));
+    public String modifyUserSelectedView(Model model, @PathVariable String id) {
+        long uid = 0;
 
-        User u = userRepo.findOne(Long.parseLong(id));
+        try {
+            uid = Long.parseLong(id);
+        } catch (NumberFormatException nfe) {
+            model.addAttribute("error", Util.build("Value ", id, " is not a number!"));
+            return "modifyUser";
+        }
+
+        User u = userRepo.findOne(uid);
 
         if (u != null) {
             model.addAttribute("target_user", u);
@@ -114,19 +114,13 @@ public class AdministrativeController {
             model.addAttribute("error", "User does not exist in the database!");
         }
 
-        request.getSession().setAttribute("error", null);
-
         return "modifyUser";
     }
 
     @RequestMapping(value = "/admin.createPerm", method = RequestMethod.GET)
     @Accessibility(requireLogin = true, requiredPermissions = {"create_perm"})
-    public String createPermission(HttpServletRequest request, Model m) {
-        m.addAttribute("user", request.getSession().getAttribute("user"));
-        m.addAttribute("error", request.getSession().getAttribute("error"));
+    public String createPermission(Model m) {
         m.addAttribute("permissions_Table", permRepo.findAll());
-
-        request.getSession().setAttribute("error", null);
 
         return "createPerm";
     }
@@ -149,7 +143,7 @@ public class AdministrativeController {
 
         try {
             permRepo.save(p);
-            request.getSession().setAttribute("error", "Added new permission to the database!");
+            request.getSession().setAttribute("success", "Added new permission to the database!");
         } catch (DataIntegrityViolationException dive) {
             request.getSession().setAttribute("error", "Permission already exists in the database!");
         }
@@ -161,8 +155,6 @@ public class AdministrativeController {
     @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
     @ResponseBody
     public String modifyUserUpdatePerm(@RequestParam String user, @RequestParam String perm, @RequestParam String enabled) {
-        System.out.println("method pinged: " + user + " - " + perm + " - " + enabled);
-
         long uid = 0;
         long pid = 0;
         boolean add = Boolean.parseBoolean(enabled);

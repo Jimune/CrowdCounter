@@ -5,29 +5,55 @@
     <head>
         <script src="p_angular.js"></script>
         <link rel="stylesheet" href="/style.css" type="text/css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
         <title>Modify User</title>
     </head>
     <body>
         <jsp:include page="header.jsp"/>
 
-        <c:if test="${not empty error}">
-            <div class="error">${error}</div>
-        </c:if>
-        <c:if test="${empty error}">
-            <h1>Modifying user ${target_user.name}</h1>
-            <div class="permissions">
-                <c:forEach var="tperm" items="${permissions_Table}">
-                    <input type="checkbox" onchange="updatePerm(${target_user.id},${tperm.id},this)"
-                    <c:forEach var="uperm" items="${target_user.permissions}">
-                    <c:if test="${tperm.permission eq uperm.permission}">
-                           checked
-                    </c:if>
-                    </c:forEach>
-                    >${tperm.description}<br>
-                </c:forEach>
-            </div>
-        </c:if>
-
-
+        <div class="container">
+            <form role="form">
+                <c:if test="${not empty error}">
+                    <div class="error">${error}</div>
+                </c:if>
+                <c:if test="${empty error}">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h1>Modifying user ${target_user.name}</h1>
+                            <c:forEach var="tperm" items="${permissions_Table}">
+                                <div class="checkbox checkbox-primary">
+                                    <input id="checkbox-${tperm.id}" type="checkbox"
+                                           onchange="updatePerm(${target_user.id},${tperm.id},this)"
+                                    <c:forEach var="uperm" items="${target_user.permissions}">
+                                    <c:if test="${tperm.permission eq uperm.permission}">
+                                           checked
+                                    </c:if>
+                                    </c:forEach>
+                                    >
+                                    <label for="checkbox-${tperm.id}">
+                                            ${tperm.description}
+                                    </label>
+                                </div>
+                            </c:forEach>
+                        </div>
+                        <div class="col-md-8">
+                            <h1>Login session history:</h1>
+                            <div class="row">
+                                <div class="col-md-4">Logged in from</div>
+                                <div class="col-md-4">Logged in at</div>
+                                <div class="col-md-4">Logged out at</div>
+                            </div>
+                            <c:forEach var="sess" items="${target_user.sessions}">
+                                <div class="row">
+                                    <div class="col-md-4">${sess.ip}</div>
+                                    <div class="col-md-4">${sess.login}</div>
+                                    <div class="col-md-4">${sess.logout}</div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </c:if>
+            </form>
+        </div>
     </body>
 </html>

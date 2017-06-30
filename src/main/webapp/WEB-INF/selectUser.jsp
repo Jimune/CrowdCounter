@@ -10,11 +10,19 @@
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-        <br><br><br><br>
-        <c:if test="${not empty error}"><div class="error">${error}</div></c:if>
-        <input type="text" id="finduserinput" onkeyup="fetchData()">
-        <table id="datatable">
 
-        </table>
+        <div class="container">
+            <c:if test="${not empty error}">
+                <div class="error">${error}</div>
+            </c:if>
+            <form role="form" method="get">
+                <input class="form-control" type="text" id="finduserinput" onkeyup="fetchData()" placeholder="Username">
+                <div class="list-group" id="datatable">
+
+                </div>
+            </form>
+
+
+        </div>
     </body>
 </html>
