@@ -17,9 +17,13 @@ import java.util.Set;
 public class HomeController {
 
     @RequestMapping("/index")
-    public String test(HttpServletRequest request, Model model) {
-        model.addAttribute("user", request.getSession().getAttribute("user"));
+    public String home(HttpServletRequest request, Model model) {
         return "index";
+    }
+
+    @RequestMapping("/")
+    public String sendToIndex() {
+        return "redirect:/index";
     }
 
     @RequestMapping("/fake")
