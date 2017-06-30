@@ -3,9 +3,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-        <script src="/p_angular.js"></script>
-        <link rel="stylesheet" href="/style.css" type="text/css">
         <title>Select User</title>
     </head>
     <body>

@@ -3,9 +3,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="p_angular.js"></script>
-        <link rel="stylesheet" href="/style.css" type="text/css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
         <title>Modify User</title>
     </head>
     <body>
