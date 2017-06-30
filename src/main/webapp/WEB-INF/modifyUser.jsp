@@ -19,7 +19,7 @@
                 <c:if test="${empty error}">
                     <div class="row">
                         <div class="col-md-4">
-                            <h1>Modifying user ${target_user.name}</h1>
+                            <h1>Modifying permissions for user ${target_user.name}</h1>
                             <c:forEach var="tperm" items="${permissions_Table}">
                                 <div class="checkbox checkbox-primary">
                                     <input id="checkbox-${tperm.id}" type="checkbox"

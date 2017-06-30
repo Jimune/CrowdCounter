@@ -70,14 +70,14 @@ public class AdministrativeController {
     @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
     @ResponseBody
     public String modifyUserView(@RequestParam String name) {
-        System.out.println("method pinged: " + name);
-
-        if (name.equals("SomeRandomGibberishToFilter")) return "<tr><td>No results found!</td></tr>";
+        if (name.equals("SomeRandomGibberishToFilter"))
+            return "<div href=\"\" class=\"list-group-item\"><p class=\"list-group-item-text\">No results found!</p></div>";
 
         StringBuilder sb = new StringBuilder();
         Set<User> users = userRepo.findAllByNameContaining(name);
 
-        if (users.size() == 0 || users.isEmpty()) return "<tr><td>No results found!</td></tr>";
+        if (users.size() == 0 || users.isEmpty())
+            return "<div href=\"\" class=\"list-group-item\"><p class=\"list-group-item-text\">No results found!</p></div>";
 
         for (User u : users) {
             sb.append("<a href=\"/admin.modifyUser.").append(u.getId()).append("\" class=\"list-group-item\">")

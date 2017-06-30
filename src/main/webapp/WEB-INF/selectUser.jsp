@@ -12,17 +12,16 @@
         <jsp:include page="header.jsp"/>
 
         <div class="container">
-            <c:if test="${not empty error}">
-                <div class="error">${error}</div>
-            </c:if>
-            <form role="form" method="get">
+            <form class="form-signin" method="get">
+                <h2>Search for user</h2>
+                <c:if test="${not empty error}">
+                    <div class="error">${error}</div>
+                </c:if>
                 <input class="form-control" type="text" id="finduserinput" onkeyup="fetchData()" placeholder="Username">
                 <div class="list-group" id="datatable">
 
                 </div>
             </form>
-
-
         </div>
     </body>
 </html>
