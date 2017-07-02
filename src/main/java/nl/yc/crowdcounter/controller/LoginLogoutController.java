@@ -82,16 +82,8 @@ public class LoginLogoutController {
     @RequestMapping("/logout")
     @Accessibility(requireLogin = true)
     public String logoutHandle(HttpServletRequest request) {
-        User u = (User) request.getSession().getAttribute("user");
-        Long id = u.getId();
-        LoginSession loginSession = userRepo.findOne(id).getSessions().iterator().next();
-
-        loginSession.setLogout(new Date(System.currentTimeMillis()));
-        sessRepo.save(loginSession);
-        userRepo.save(u);
         request.getSession().invalidate();
 
         return "redirect:/index";
     }
-
 }
