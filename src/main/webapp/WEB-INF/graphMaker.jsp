@@ -9,8 +9,6 @@
 <html>
 <head>
     <title>graphMaker</title>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <link rel="stylesheet" href="/style.css" type="text/css">
     <link rel="stylesheet" href="/graphStyle.css" type="text/css">
 
@@ -18,14 +16,15 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-
-<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-<script src="/graphPlotter.js"></script>
-
-
-<div style="top: 85%; position:absolute" id="data"></div>
-<input type="button" value="get the data" onclick="getData()" style="top: 80%; position:absolute">
-
+<div style="top: 40%;left: 30%; position:absolute" id="data">
+    <form method="post" action="graphMaker">
+        <label for="location">Location: </label>
+        <input type="text" name="location" id="location">
+        <label for="date">Date: </label>
+        <input type="text" id="date" name="date">
+        <input type="submit" value="make graph!">
+    </form>
+</div>
 
 </body>
 </html>

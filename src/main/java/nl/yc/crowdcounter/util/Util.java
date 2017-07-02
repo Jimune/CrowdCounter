@@ -1,5 +1,7 @@
 package nl.yc.crowdcounter.util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -45,5 +47,24 @@ public class Util {
         Date date = new Date(System.currentTimeMillis() - ThreadLocalRandom.current().nextLong(20000000000L));
         return date;
     }
+
+    public static Date beginDate(String date) {
+        Date fDate = null;
+        SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            fDate = dFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return fDate;
+    }
+
+    public static Date setNewTime(Date timeZone) {
+        Date newTimeZone = null;
+        long ltime = timeZone.getTime() + 1 * 1 * 60 * 60 * 1000;
+        newTimeZone = new Date(ltime);
+        return newTimeZone;
+    }
+
 
 }
