@@ -1,10 +1,8 @@
-/**
- * Created by yvo.romp on 29/06/2017.
- */
 getData();
 var chart;
 
 function getData() {
+
     chart = Highcharts.chart('container', {
         /* chartheader info */
         chart: {

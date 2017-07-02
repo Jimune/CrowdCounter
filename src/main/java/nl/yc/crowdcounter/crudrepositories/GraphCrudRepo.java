@@ -4,14 +4,19 @@ import nl.yc.crowdcounter.model.GraphData;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Date;
 import java.util.Set;
+
 
 /**
  * Created by yvo.romp on 29/06/2017.
  */
 public interface GraphCrudRepo extends CrudRepository<GraphData, Long> {
 
-    @Query("SELECT gd FROM GraphData gd WHERE gd.location='Borne' AND gd.timestamp BETWEEN '2017-03-29 00:00:01' AND '2017-03-30 00:00:01'")
-    Set<String> findByTime();
+    @Query("SELECT gd FROM GraphData gd WHERE gd.location =?3 AND gd.timestamp BETWEEN ?1 AND ?2")
+    Set<GraphData> findAllByTimeAndLocation(Date startDate, Date endDate, String location);
+
+    @Query("SELECT gd FROM GraphData gd WHERE gd.location =?1 AND gd.timestamp BETWEEN '2017-03-29 00:00:00' AND '2017-03-29 00:01:00' ")
+    Set<GraphData> findAllByLocation(String location);
 
 }

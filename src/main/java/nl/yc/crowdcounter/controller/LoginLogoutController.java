@@ -51,7 +51,7 @@ public class LoginLogoutController {
         if (name == null || name.isEmpty()
                 || pass == null || pass.isEmpty()) {
             request.getSession().setAttribute("error", "Username and password do not match!");
-            return "redirect:/login";
+            return "redirect:/index";
         }
 
         User u = userRepo.findByName(name);
