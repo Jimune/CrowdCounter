@@ -1,7 +1,9 @@
 package nl.yc.crowdcounter.util;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -64,6 +66,25 @@ public class Util {
         long ltime = timeZone.getTime() + 1 * 1 * 60 * 60 * 1000;
         newTimeZone = new Date(ltime);
         return newTimeZone;
+    }
+
+    public static String setNewString(int ssid) {
+        if (ssid == 0) {
+            return "Weak Strenght";
+        } else if (ssid == 1) {
+            return "Medium Strength";
+        } else return "High Strength";
+    }
+
+    public static void setRightName(HttpServletRequest request, ArrayList<Integer> hourmap, int number) {
+        if (number == 0) {
+            request.getSession().setAttribute("weakhourmap", hourmap);
+        } else if (number == 1) {
+            request.getSession().setAttribute("mediumhourmap", hourmap);
+        } else {
+            request.getSession().setAttribute("highhourmap", hourmap);
+        }
+
     }
 
 

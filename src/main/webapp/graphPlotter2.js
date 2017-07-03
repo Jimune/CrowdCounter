@@ -1,8 +1,6 @@
-getData();
 var chart;
 
-function getData() {
-
+function getData(weakHourmap, mediumHourmap, highHourmap) {
     chart = Highcharts.chart('container', {
         /* chartheader info */
         chart: {
@@ -48,22 +46,26 @@ function getData() {
         },
         series: [{
             name: 'Weak strength',
-            data: giveDataFromDB()
+            data: weakHourmap
 
         }, {
             name: 'Medium Strength',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+            data: mediumHourmap
 
         }, {
             name: 'High Strength',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+            data: highHourmap
 
         }]
     });
-}
 
-function giveDataFromDB() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/fetching", false);
-    xhttp.send();
+
+}
+/**
+ * Created by yvo.romp on 02/07/2017.
+ */
+
+function showText() {
+    document.getElementById("form").submit();
+
 }
