@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/style.css" type="text/css">
         <title>Home</title>
     </head>
     <body>

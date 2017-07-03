@@ -19,6 +19,10 @@ function fetchData() {
     xhttp.send("name=" + input);
 }
 
+function checkEnter() {
+
+}
+
 function updatePerm(user, perm, checkbox) {
     var add = checkbox.checked;
 

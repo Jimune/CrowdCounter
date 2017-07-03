@@ -8,7 +8,6 @@ import nl.yc.crowdcounter.model.User;
 import nl.yc.crowdcounter.util.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,16 +28,12 @@ public class LoginLogoutController {
     SessionCrudRepo sessRepo;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginView(HttpServletRequest request, Model model) {
+    public String loginView(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
 
         if (session != null && session.getAttribute("user") != null) {
             return "redirect:/index";
         }
-
-        session = request.getSession();
-        model.addAttribute("error", session.getAttribute("error"));
-        session.setAttribute("error", null);
 
         return "login";
     }
@@ -71,7 +66,6 @@ public class LoginLogoutController {
             sessRepo.save(s);
 
             request.getSession().setAttribute("user", u);
-            request.getSession().setAttribute("error", null);
 
             sessions.add(s);
             u.setSessions(sessions);
@@ -88,16 +82,8 @@ public class LoginLogoutController {
     @RequestMapping("/logout")
     @Accessibility(requireLogin = true)
     public String logoutHandle(HttpServletRequest request) {
-        User u = (User) request.getSession().getAttribute("user");
-        Long id = u.getId();
-        LoginSession loginSession = userRepo.findOne(id).getSessions().iterator().next();
-
-        loginSession.setLogout(new Date(System.currentTimeMillis()));
-        sessRepo.save(loginSession);
-        userRepo.save(u);
         request.getSession().invalidate();
 
         return "redirect:/index";
     }
-
 }

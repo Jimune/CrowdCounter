@@ -3,20 +3,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/style.css" type="text/css">
         <title>Login</title>
     </head>
     <body>
         <jsp:include page="header.jsp"/>
 
-        <div class="content center login-container">
-            <c:if test="${not empty error}"><div class="error">${error}</div><br></c:if>
-            <form method="post" action="login">
-                <label class="align-left username" for="name">Username: </label>
-                <input class="align-right username" type="text" name="name" id="name"><br>
-                <label class="align-left password" for="pass">Password: </label>
-                <input class="align-right password" type="password" name="pass" id="pass"><br>
-                <input class="align-right submit-button" type="submit" value="Login">
+        <div class="container">
+            <form class="form-signin" method="post" action="login">
+                <h2 class="form-signin-heading">Please login</h2>
+                <div class="error"><c:if test="${not empty error}">${error}</c:if></div>
+                <br>
+                <div class="success"><c:if test="${not empty success}">${success}</c:if></div>
+                <br>
+                <label class="sr-only" for="name">Username: </label>
+                <input class="form-control top" type="text" name="name" id="name" placeholder="Username" required
+                       autofocus>
+                <label class="sr-only" for="pass">Password: </label>
+                <input class="form-control bottom" type="password" name="pass" id="pass" placeholder="Password"
+                       required>
+                <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
             </form>
         </div>
     </body>

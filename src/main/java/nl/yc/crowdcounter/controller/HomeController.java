@@ -4,10 +4,7 @@ import nl.yc.crowdcounter.model.Permission;
 import nl.yc.crowdcounter.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
@@ -20,17 +17,14 @@ import java.util.Set;
 public class HomeController {
 
     @RequestMapping("/index")
-    public String test(HttpServletRequest request, Model model) {
-        model.addAttribute("user", request.getSession().getAttribute("user"));
+    public String home(HttpServletRequest request, Model model) {
         return "index";
     }
 
-    @RequestMapping("/json")
-    @ResponseBody
-    public User dispUser(HttpServletRequest request) {
-        return (User) request.getSession().getAttribute("user");
+    @RequestMapping("/")
+    public String sendToIndex() {
+        return "redirect:/index";
     }
-
 
     @RequestMapping("/fake")
     public String createSession(HttpServletRequest request) {
@@ -64,19 +58,5 @@ public class HomeController {
         request.getSession().setAttribute("user", u);
 
         return "redirect:/index";
-    }
-
-    @RequestMapping(value = "/parse", method = RequestMethod.POST)
-    @ResponseBody
-    public void parse(@RequestBody User user) {
-        System.out.println(user);
-
-        System.out.println(user.getName());
-        System.out.println(user.getHash());
-        user.getPermissions().forEach((i) -> {
-            System.out.println(i.getPermission());
-            System.out.println(i.getDescription());
-        });
-
     }
 }

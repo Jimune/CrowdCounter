@@ -11,7 +11,7 @@
     <title>graphPlotter</title>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="/graphPlotter2.js"></script>
+    <script src="/graphFunctions.js"></script>
     <link rel="stylesheet" href="/graphStyle.css" type="text/css">
 </head>
 <body>
@@ -19,7 +19,7 @@
 
 
 <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto;"></div>
-<%--<script src="/graphPlotter2.js"></script>--%>
+<%--<script src="/graphFunctions.js"></script>--%>
 <script>getData(${weakhourmap}, ${mediumhourmap}, ${highhourmap})</script>
 
 </body>

@@ -3,18 +3,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-        <script src="/p_angular.js"></script>
-        <link rel="stylesheet" href="/style.css" type="text/css">
         <title>Select User</title>
     </head>
     <body>
         <jsp:include page="header.jsp"/>
-        <br><br><br><br>
-        <c:if test="${not empty error}"><div class="error">${error}</div></c:if>
-        <input type="text" id="finduserinput" onkeyup="fetchData()">
-        <table id="datatable">
 
-        </table>
+        <div class="container">
+            <form class="form-signin" method="get">
+                <h2>Search for user</h2>
+                <c:if test="${not empty error}">
+                    <div class="error">${error}</div>
+                </c:if>
+                <input class="form-control" type="text" id="finduserinput" onkeyup="fetchData()" placeholder="Username">
+                <div class="list-group" id="datatable">
+
+                </div>
+            </form>
+        </div>
     </body>
 </html>

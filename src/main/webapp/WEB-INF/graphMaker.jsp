@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>graphMaker</title>
-    <script src="/graphPlotter2.js"></script>
+    <script src="/graphFunctions.js"></script>
     <link rel="stylesheet" href="/style.css" type="text/css">
     <link rel="stylesheet" href="/graphStyle.css" type="text/css">
     <img id="myImg" src="img_pulpit.jpg" style="visibility: hidden;">
