@@ -66,6 +66,13 @@ function getData(weakHourmap, mediumHourmap, highHourmap) {
  */
 
 function showText() {
+    setImageVisible('myImg', true);
     document.getElementById("form").submit();
 
 }
+
+function setImageVisible(id, visible) {
+    var img = document.getElementById(id);
+    img.style.visibility = (visible ? 'visible' : 'hidden');
+}
+
