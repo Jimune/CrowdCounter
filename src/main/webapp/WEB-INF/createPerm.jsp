@@ -11,15 +11,13 @@
 <div class="container">
     <form class="form-signin" method="post" action="admin.createPerm">
         <h2 class="form-signin-heading">Create new Permission</h2>
-        <div class="error"><c:if test="${not empty error}">${error}</c:if></div>
-        <br>
-        <div class="success"><c:if test="${not empty success}">${success}</c:if></div>
-        <br>
+        <div class="row error"><c:if test="${not empty error}">${error}</c:if></div>
+        <div class="row success"><c:if test="${not empty success}">${success}</c:if></div>
         <label class="sr-only" for="perm">Permission: </label>
-        <input class="form-control username" type="text" name="perm" id="perm" placeholder="Permission" required
-               autofocus><br>
+        <input class="form-control top" type="text" name="perm" id="perm" placeholder="Permission" required
+               autofocus>
         <label class="sr-only" for="desc">Description: </label>
-        <input class="form-control password" type="text" name="desc" id="desc" placeholder="Description"><br>
+        <input class="form-control bottom" type="text" name="desc" id="desc" placeholder="Description">
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Create">
     </form>
 

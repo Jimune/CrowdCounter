@@ -30,19 +30,19 @@ body {
     z-index: 2;
 }
 
-.form-signin .username {
+.form-signin .top {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.form-signin .password {
+.form-signin .bottom {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 
-.form-signin .pre-password {
+.form-signin .middle {
     margin-bottom: -1px;
     border-radius: 0;
 }

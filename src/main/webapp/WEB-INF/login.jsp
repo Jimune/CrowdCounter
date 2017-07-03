@@ -16,11 +16,11 @@
                 <div class="success"><c:if test="${not empty success}">${success}</c:if></div>
                 <br>
                 <label class="sr-only" for="name">Username: </label>
-                <input class="form-control username" type="text" name="name" id="name" placeholder="Username" required
-                       autofocus><br>
+                <input class="form-control top" type="text" name="name" id="name" placeholder="Username" required
+                       autofocus>
                 <label class="sr-only" for="pass">Password: </label>
-                <input class="form-control password" type="password" name="pass" id="pass" placeholder="Password"
-                       required><br>
+                <input class="form-control bottom" type="password" name="pass" id="pass" placeholder="Password"
+                       required>
                 <input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
             </form>
         </div>
