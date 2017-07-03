@@ -40,7 +40,7 @@ public class Util {
         return location;
     }
 
-    public static String getRandomStrenght() {
+    public static String getRandomStrength() {
         String strength = Constants.STRENGTHS[Constants.RANDOM.nextInt(Constants.STRENGTHS.length)];
         return strength;
     }

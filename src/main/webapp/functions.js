@@ -20,7 +20,10 @@ function fetchData() {
 }
 
 function checkEnter() {
+    var dataTable = document.getElementById("datatable");
+    var link = dataTable.children[0].attributes[0].value;
 
+    window.location.href = window.location.host + link;
 }
 
 function updatePerm(user, perm, checkbox) {

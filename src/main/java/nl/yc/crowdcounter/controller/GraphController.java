@@ -85,18 +85,17 @@ public class GraphController {
         return "graphPlotter";
     }
 
-
-    //    @RequestMapping(value = "/graphMaker", method = RequestMethod.GET)
+//    @RequestMapping(value = "/filldb" , method = RequestMethod.GET)
 //    @Accessibility(requireLogin = true)
 //    public String createGraphHandle(HttpServletRequest request, Model model) {
 //        Set<GraphData> macs = new HashSet<>();
 //
-//
+//        long start = System.currentTimeMillis();
 //        for (int i = 0; i < 1000000; i++) {
 //            GraphData graphData = new GraphData();
 //            String mac = Util.getRandomMac();
 //            String location = Util.getRandomLocation();
-//            String strength = Util.getRandomStrenght();
+//            String strength = Util.getRandomStrength();
 //            Date date = Util.getRandomDate();
 //
 //            graphData.setAddress(mac);
@@ -108,6 +107,10 @@ public class GraphController {
 //        }
 //
 //        graphCrudRepo.save(macs);
+//
+//        long end = System.currentTimeMillis();
+//
+//        System.out.println(""+(end-start));
 //
 //        return "/graphMaker";
 //    }

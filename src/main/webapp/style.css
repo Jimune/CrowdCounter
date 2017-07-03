@@ -171,3 +171,8 @@ body {
 .checkbox-success input[type="checkbox"]:checked + label::after {
     color: #fff;
 }
+
+.height-limit {
+    height: 20%;
+    max-height: 20%;
+}

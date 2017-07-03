@@ -9,16 +9,17 @@
         <jsp:include page="header.jsp"/>
 
         <div class="container">
-            <form class="form-signin" method="get">
+            <div class="form-signin">
                 <h2>Search for user</h2>
                 <c:if test="${not empty error}">
                     <div class="error">${error}</div>
                 </c:if>
-                <input class="form-control" type="text" id="finduserinput" onkeyup="fetchData()" placeholder="Username">
+                <input class="form-control" type="text" id="finduserinput" onkeyup="fetchData()"
+                       onkeydown="if (event.keyCode == 13) checkEnter()" placeholder="Username">
                 <div class="list-group" id="datatable">
 
                 </div>
-            </form>
+            </div>
         </div>
     </body>
 </html>

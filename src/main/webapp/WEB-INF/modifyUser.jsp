@@ -33,7 +33,7 @@
                                 </div>
                             </c:forEach>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 height-limit">
                             <h1>Login session history:</h1>
                             <div class="row">
                                 <div class="col-md-4">Logged in from</div>
