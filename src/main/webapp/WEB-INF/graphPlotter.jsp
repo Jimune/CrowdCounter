@@ -5,27 +5,22 @@
   Time: 15:35
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>graphPlotter</title>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="graphPlotter.js"></script>
-    <link rel="stylesheet" href="/style.css" type="text/css">
+    <script src="/graphPlotter2.js"></script>
     <link rel="stylesheet" href="/graphStyle.css" type="text/css">
-
 </head>
 <body>
 <jsp:include page="header.jsp"/>
 
-hello
-${}
-<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
-<script src="/graphPlotter.js"></script>
-hello
+
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto;"></div>
+<%--<script src="/graphPlotter2.js"></script>--%>
+<script>getData(${weakhourmap}, ${mediumhourmap}, ${highhourmap})</script>
 
 </body>
 </html>

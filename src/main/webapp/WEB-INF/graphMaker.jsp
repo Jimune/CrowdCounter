@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>graphMaker</title>
+    <script src="/graphPlotter2.js"></script>
     <link rel="stylesheet" href="/style.css" type="text/css">
     <link rel="stylesheet" href="/graphStyle.css" type="text/css">
 
@@ -17,12 +18,12 @@
 <body>
 <jsp:include page="header.jsp"/>
 <div style="top: 40%;left: 30%; position:absolute" id="data">
-    <form method="post" action="graphMaker">
+    <form method="post" action="graphMaker" id="form">
         <label for="location">Location: </label>
         <input type="text" name="location" id="location">
         <label for="date">Date: </label>
         <input type="text" id="date" name="date">
-        <input type="submit" value="make graph!">
+        <input type="button" value="make graph!" onclick="showText()">
     </form>
 </div>
 
