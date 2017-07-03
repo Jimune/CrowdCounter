@@ -61,15 +61,6 @@ function getData(weakHourmap, mediumHourmap, highHourmap) {
 
 
 }
-/**
- * Created by yvo.romp on 02/07/2017.
- */
-
-function showText() {
-    setImageVisible('myImg', true);
-    document.getElementById("form").submit();
-
-}
 
 function setImageVisible(id, visible) {
     var img = document.getElementById(id);
