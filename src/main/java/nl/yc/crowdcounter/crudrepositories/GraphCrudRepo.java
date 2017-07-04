@@ -19,4 +19,6 @@ public interface GraphCrudRepo extends CrudRepository<GraphData, Long> {
     @Query("SELECT gd FROM GraphData gd WHERE gd.location =?1 AND gd.timestamp BETWEEN '2017-03-29 00:00:00' AND '2017-03-29 00:01:00' ")
     Set<GraphData> findAllByLocation(String location);
 
+    @Query("SELECT DISTINCT gd.location FROM GraphData gd WHERE gd.location LIKE CONCAT('%', ?1, '%')")
+    Set<String> findDistinctByLocationContaining(String location);
 }

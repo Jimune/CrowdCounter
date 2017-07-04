@@ -67,3 +67,28 @@ function setImageVisible(id, visible) {
     img.style.visibility = (visible ? 'visible' : 'hidden');
 }
 
+function fetchLocation() {
+    var input = document.getElementById("location").value;
+    var table = document.getElementById("datatable");
+
+    if (input.length <= 0) {
+        table.innerHTML = "";
+        return;
+    }
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            table.innerHTML = xhttp.responseText;
+        }
+    };
+
+    xhttp.open("POST", "/fetchgraphloc", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("name=" + input);
+}
+
+function fillSearch(fill) {
+    document.getElementById("location").value = fill;
+    document.getElementById("datatable").innerHTML = "";
+}

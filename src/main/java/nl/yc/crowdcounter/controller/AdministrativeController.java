@@ -3,6 +3,7 @@ package nl.yc.crowdcounter.controller;
 import nl.yc.crowdcounter.crudrepositories.PermissionCrudRepo;
 import nl.yc.crowdcounter.crudrepositories.UserCrudRepo;
 import nl.yc.crowdcounter.model.Accessibility;
+import nl.yc.crowdcounter.model.ModifyUserPermissionData;
 import nl.yc.crowdcounter.model.Permission;
 import nl.yc.crowdcounter.model.User;
 import nl.yc.crowdcounter.util.BCrypt;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -154,49 +156,16 @@ public class AdministrativeController {
     @RequestMapping(value = "/admin.modifyUser.updatePerm", method = RequestMethod.POST)
     @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
     @ResponseBody
-    public String modifyUserUpdatePerm(@RequestParam String user, @RequestParam String perm, @RequestParam String enabled) {
-        long uid = 0;
-        long pid = 0;
-        boolean add = Boolean.parseBoolean(enabled);
+    public void modifyUserUpdatePerm(@RequestBody ModifyUserPermissionData data) {
+        Set<Permission> newPerms = new HashSet<>();
 
-        try {
-            uid = Long.parseLong(user);
-            pid = Long.parseLong(perm);
-        } catch (NumberFormatException nfe) {
+        for (Permission perm : permRepo.findAll()) {
+            if (data.getPerms().contains(new Long(perm.getId()))) newPerms.add(perm);
         }
 
-        if (uid == 0 || pid == 0) {
-            if (add) return "Error adding permission to user! User ID or Permission ID is invalid!";
-            else return "Error removing permission to user! User ID or Permission ID is invalid!";
-        }
+        User u = userRepo.findOne(data.getUid());
 
-        User u = userRepo.findOne(uid);
-
-        if (u == null) return "Error, no user with this User ID exists!";
-
-        Set<Permission> permissions = u.getPermissions();
-
-        if (add) {
-            permissions.add(permRepo.findOne(pid));
-        } else {
-            Permission toRemove = null;
-
-            for (Permission permission : permRepo.findAll()) {
-                if (permission.getId() == pid) {
-                    toRemove = permission;
-                    break;
-                }
-            }
-
-            if (toRemove == null)
-                return "Error, user does not have a permission with this ID or the permission does not exist!";
-
-            permissions.remove(toRemove);
-        }
-
-        u.setPermissions(permissions);
+        u.setPermissions(newPerms);
         userRepo.save(u);
-
-        return add ? "Permission successfully added!" : "Permission successfully removed!";
     }
 }

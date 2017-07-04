@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -85,6 +87,35 @@ public class GraphController {
         return "graphPlotter";
     }
 
+    @RequestMapping(value = "/fetchgraphloc", method = RequestMethod.POST)
+    @ResponseBody
+    public String fetchGraphLocation(@RequestParam String name) {
+        if (name == null || name.isEmpty()) {
+            return "<div href=\"#\" class=\"list-group-item\"><p class=\"list-group-item-text\">No results found!</p></div>";
+        }
+
+        Set<String> gData = graphCrudRepo.findDistinctByLocationContaining(name);
+        System.out.println(gData.size());
+        gData.forEach((gd) -> System.out.println(gd));
+        if (gData != null && !gData.isEmpty()) {
+
+            if (gData.size() == 1 && gData.iterator().next().equalsIgnoreCase(name)) {
+                return "";
+            }
+
+            StringBuilder sb = new StringBuilder();
+
+            for (String gd : gData) {
+                sb.append("<a href=\"#\" class=\"list-group-item\" onclick=\"fillSearch('").append(gd).append("')\">")
+                        .append("<p class=\"list-group-item-text\">")
+                        .append(gd).append("</p>").append("</a>");
+            }
+
+            return sb.toString();
+        }
+
+        return "<div href=\"#\" class=\"list-group-item\"><p class=\"list-group-item-text\">No results found!</p></div>";
+    }
 //    @RequestMapping(value = "/filldb" , method = RequestMethod.GET)
 //    @Accessibility(requireLogin = true)
 //    public String createGraphHandle(HttpServletRequest request, Model model) {

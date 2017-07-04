@@ -31,10 +31,12 @@ public class CrowdCounterSessionListener implements HttpSessionListener {
 
         if (u != null) { // u will be null when trying to log in after a new (not logged in) session has expired.
             Long id = u.getId();
-            LoginSession loginSession = userRepo.findOne(id).getSessions().iterator().next();
+            if (id != null) {
+                LoginSession loginSession = userRepo.findOne(id).getSessions().iterator().next();
 
-            loginSession.setLogout(new Date(System.currentTimeMillis()));
-            sessRepo.save(loginSession);
+                loginSession.setLogout(new Date(System.currentTimeMillis()));
+                sessRepo.save(loginSession);
+            }
         }
     }
 }
