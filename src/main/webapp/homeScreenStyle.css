@@ -1,0 +1,21 @@
+.carousel-inner {
+    position: relative;
+    left: 15%;
+}
+
+.container {
+    position: relative;
+}
+
+.carousel-caption {
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 6% !important;
+    margin-left: -40% !important;
+}
+
+.lefty {
+    margin-left: -30% !important;
+}
