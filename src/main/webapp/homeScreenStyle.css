@@ -1,6 +1,13 @@
 .carousel-inner {
     position: relative;
-    left: 15%;
+}
+
+.item.active {
+    left: 20% !important;
+}
+
+.item {
+    left: 20% !important;
 }
 
 .container {
@@ -18,4 +25,12 @@ h1 {
 
 .lefty {
     margin-left: -30% !important;
+}
+
+.carousel-control.left {
+    background-image: none !important;
+}
+
+.carousel-control.right {
+    background-image: none !important;
 }
