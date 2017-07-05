@@ -46,7 +46,7 @@ public class LoginLogoutController {
         if (name == null || name.isEmpty()
                 || pass == null || pass.isEmpty()) {
             request.getSession().setAttribute("error", "Username and password do not match!");
-            return "redirect:/index";
+            return "redirect:/login";
         }
 
         User u = userRepo.findByName(name);
@@ -80,7 +80,7 @@ public class LoginLogoutController {
     }
 
     @RequestMapping("/logout")
-    @Accessibility(requireLogin = true)
+    @Accessibility
     public String logoutHandle(HttpServletRequest request) {
         request.getSession().invalidate();
 

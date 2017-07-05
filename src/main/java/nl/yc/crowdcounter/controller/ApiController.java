@@ -29,14 +29,14 @@ public class ApiController {
 
     @RequestMapping(value = "/permissions")
     @ResponseBody
-    @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
+    @Accessibility(requiredPermissions = {"modify_user"})
     public Iterable<Permission> getAllPermissions() {
         return permCrudRepo.findAll();
     }
 
     @RequestMapping(value = "/userPermissions/{id}")
     @ResponseBody
-    @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
+    @Accessibility(requiredPermissions = {"modify_user"})
     public Object getUserPermissions(@PathVariable String id) {
         if (id == null || id.isEmpty())
             return Util.build("{\"error\":\"Request id cannot be null\",\"requestVal\":\"", id, "\"}");

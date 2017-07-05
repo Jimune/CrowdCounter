@@ -30,13 +30,13 @@ public class AdministrativeController {
     PermissionCrudRepo permRepo;
 
     @RequestMapping(value = "/admin.createAccount", method = RequestMethod.GET)
-    @Accessibility(requireLogin = true, requiredPermissions = {"add_user"})
+    @Accessibility(requiredPermissions = {"add_user"})
     public String createAccountView() {
         return "createUser";
     }
 
     @RequestMapping(value = "/admin.createAccount", method = RequestMethod.POST)
-    @Accessibility(requireLogin = true, requiredPermissions = {"add_user"})
+    @Accessibility(requiredPermissions = {"add_user"})
     public String createAccountHandle(HttpServletRequest request) {
         String name = request.getParameter("name");
         String pass = request.getParameter("pass");
@@ -69,7 +69,7 @@ public class AdministrativeController {
     }
 
     @RequestMapping(value = "/admin.modifyUser.fetchuser", method = RequestMethod.POST)
-    @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
+    @Accessibility(requiredPermissions = {"modify_user"})
     @ResponseBody
     public String modifyUserView(@RequestParam String name) {
         if (name.equals("SomeRandomGibberishToFilter"))
@@ -90,13 +90,13 @@ public class AdministrativeController {
     }
 
     @RequestMapping(value = "/admin.modifyUser.select", method = RequestMethod.GET)
-    @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
+    @Accessibility(requiredPermissions = {"modify_user"})
     public String modifyUserView() {
         return "selectUser";
     }
 
     @RequestMapping(value = "/admin.modifyUser.{id}", method = RequestMethod.GET)
-    @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
+    @Accessibility(requiredPermissions = {"modify_user"})
     public String modifyUserSelectedView(Model model, @PathVariable String id) {
         long uid = 0;
 
@@ -120,7 +120,7 @@ public class AdministrativeController {
     }
 
     @RequestMapping(value = "/admin.createPerm", method = RequestMethod.GET)
-    @Accessibility(requireLogin = true, requiredPermissions = {"create_perm"})
+    @Accessibility(requiredPermissions = {"create_perm"})
     public String createPermission(Model m) {
         m.addAttribute("permissions_Table", permRepo.findAll());
 
@@ -128,7 +128,7 @@ public class AdministrativeController {
     }
 
     @RequestMapping(value = "/admin.createPerm", method = RequestMethod.POST)
-    @Accessibility(requireLogin = true, requiredPermissions = {"create_perm"})
+    @Accessibility(requiredPermissions = {"create_perm"})
     public String createPermissionHandle(HttpServletRequest request) {
         String perm = request.getParameter("perm");
         String desc = request.getParameter("desc");
@@ -154,7 +154,7 @@ public class AdministrativeController {
     }
 
     @RequestMapping(value = "/admin.modifyUser.updatePerm", method = RequestMethod.POST)
-    @Accessibility(requireLogin = true, requiredPermissions = {"modify_user"})
+    @Accessibility(requiredPermissions = {"modify_user"})
     @ResponseBody
     public void modifyUserUpdatePerm(@RequestBody ModifyUserPermissionData data) {
         Set<Permission> newPerms = new HashSet<>();

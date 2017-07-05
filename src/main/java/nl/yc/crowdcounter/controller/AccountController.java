@@ -21,13 +21,13 @@ public class AccountController {
     UserCrudRepo userRepo;
 
     @RequestMapping(value = "/account.changePassword", method = RequestMethod.GET)
-    @Accessibility(requireLogin = true, requiredPermissions = {"change_pass"})
+    @Accessibility(requiredPermissions = {"change_pass"})
     public String changePassView() {
         return "changePassword";
     }
 
     @RequestMapping(value = "/account.changePassword", method = RequestMethod.POST)
-    @Accessibility(requireLogin = true, requiredPermissions = {"change_pass"})
+    @Accessibility(requiredPermissions = {"change_pass"})
     public String changePassView(HttpServletRequest request) {
         String origPass = request.getParameter("origPass");
         String newPass = request.getParameter("newPass");

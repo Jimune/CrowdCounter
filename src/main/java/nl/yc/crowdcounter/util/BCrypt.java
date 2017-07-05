@@ -1,8 +1,5 @@
 package nl.yc.crowdcounter.util;
 
-/**
- * Created by jim on 6/26/17.
- */
 import java.io.UnsupportedEncodingException;
 import java.security.SecureRandom;
 

@@ -84,8 +84,6 @@ public class Util {
         } else {
             request.getSession().setAttribute("highhourmap", hourmap);
         }
-
     }
-
 
 }

@@ -17,13 +17,25 @@
             <h2>CrowdCounter</h2>
             <h3>Yvo Romp & Jim Mulder</h3>
         </section>
+
         <section> <%-- First slide;  --%>
-            <h2>Why</h2>
-            <section>Some random data</section>
+            <h2>Waarom</h2>
+            <section>
+                <ul>
+                    <li>traineeship</li>
+                    <li>intresse</li>
+                </ul>
+            </section>
         </section>
-        <section>
+
+        <section> <%-- Second slide --%>
+            <h2>Hoe</h2>
             <section>random 1</section>
-            <section>random 2</section>
+        </section>
+
+        <section> <%-- Third slide --%>
+            <h2>Wat</h2>
+            <section>random 1</section>
         </section>
     </div>
 </div>
@@ -34,7 +46,6 @@
     // Full list of configuration options available here:
     // https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
-
         controls: true,
         progress: true,
         history: false,
@@ -54,12 +65,12 @@
         },
 
 // Optional libraries used to extend on reveal.js
-        dependencies: [
-            {
+        dependencies: [{
                 src: '/reveal.js/plugin/highlight/highlight.js', async: true, callback: function () {
                 hljs.initHighlightingOnLoad();
             }
             }]
-    });</script>
+    });
+</script>
 </body>
 </html>
