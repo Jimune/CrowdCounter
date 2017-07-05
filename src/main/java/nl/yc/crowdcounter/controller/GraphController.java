@@ -3,7 +3,6 @@ package nl.yc.crowdcounter.controller;
 import nl.yc.crowdcounter.crudrepositories.GraphCrudRepo;
 import nl.yc.crowdcounter.crudrepositories.UserCrudRepo;
 import nl.yc.crowdcounter.model.Accessibility;
-import nl.yc.crowdcounter.model.GraphData;
 import nl.yc.crowdcounter.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -105,6 +104,49 @@ public class GraphController {
         return "tablePlotter";
     }
 
+//    private void generateGraphAndTableData(HttpServletRequest request) {
+//        String location = request.getParameter("location");
+//        String date = request.getParameter("date");
+//
+//        if (date == null || date.isEmpty() ||
+//                location == null || location.isEmpty()) return;
+//
+//        Date beginDate = Util.beginDate(date);
+//        Date oldBeginDate = beginDate;
+//        Date endDate = Util.setNewTime(beginDate);
+//        Date oldEndDate = endDate;
+//
+//        String signalStrength = "";
+//        int totalcount = 0;
+//        int count;
+//
+//        for (int i = 0; i < 3; i++) {
+//            ArrayList<Integer> hourMapping = new ArrayList<>();
+//            beginDate = oldBeginDate;
+//            endDate = oldEndDate;
+//            signalStrength = Util.setNewString(i);
+//
+//            for (int j = 0; j < 24; j++) {
+//                count = 0;
+//                Set<GraphData> found = graphCrudRepo.findAllByTimeAndLocationAndSignalStrength(beginDate, endDate, location, signalStrength);
+//
+//                for (GraphData gd : found) {
+//                    count++;
+//                    totalcount++;
+//                }
+//
+//                hourMapping.add(count);
+//                beginDate = Util.setNewTime(beginDate);
+//                endDate = Util.setNewTime(endDate);
+//            }
+//
+//            Util.setRightName(request, hourMapping, i);
+//        }
+//
+//        request.getSession().setAttribute("date", date);
+//        request.getSession().setAttribute("location", location);
+//    }
+
     private void generateGraphAndTableData(HttpServletRequest request) {
         String location = request.getParameter("location");
         String date = request.getParameter("date");
@@ -113,40 +155,20 @@ public class GraphController {
                 location == null || location.isEmpty()) return;
 
         Date beginDate = Util.beginDate(date);
-        Date oldBeginDate = beginDate;
         Date endDate = Util.setNewTime(beginDate);
-        Date oldEndDate = endDate;
 
-        String signalStrength = "";
-        int totalcount = 0;
-        int count;
+        ArrayList<Integer> strengthGroup1 = Util.dissectData(graphCrudRepo.findAllByTimeAndLocationAndSignalStrengthOrderByTimestampAsc(beginDate, endDate, location, Util.setNewString(0)));
+        ArrayList<Integer> strengthGroup2 = Util.dissectData(graphCrudRepo.findAllByTimeAndLocationAndSignalStrengthOrderByTimestampAsc(beginDate, endDate, location, Util.setNewString(1)));
+        ArrayList<Integer> strengthGroup3 = Util.dissectData(graphCrudRepo.findAllByTimeAndLocationAndSignalStrengthOrderByTimestampAsc(beginDate, endDate, location, Util.setNewString(2)));
 
-        for (int i = 0; i < 3; i++) {
-            ArrayList<Integer> hourMapping = new ArrayList<>();
-            beginDate = oldBeginDate;
-            endDate = oldEndDate;
-            signalStrength = Util.setNewString(i);
-
-            for (int j = 0; j < 24; j++) {
-                count = 0;
-                Set<GraphData> found = graphCrudRepo.findAllByTimeAndLocationAndSignalStrength(beginDate, endDate, location, signalStrength);
-
-                for (GraphData gd : found) {
-                    count++;
-                    totalcount++;
-                }
-
-                hourMapping.add(count);
-                beginDate = Util.setNewTime(beginDate);
-                endDate = Util.setNewTime(endDate);
-            }
-
-            Util.setRightName(request, hourMapping, i);
-        }
+        Util.setRightName(request, strengthGroup1, 0);
+        Util.setRightName(request, strengthGroup2, 1);
+        Util.setRightName(request, strengthGroup3, 2);
 
         request.getSession().setAttribute("date", date);
         request.getSession().setAttribute("location", location);
     }
+
 
     private void fillModelWithRequestData(HttpServletRequest request, Model model) {
         model.addAttribute("date", request.getSession().getAttribute("date"));

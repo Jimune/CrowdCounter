@@ -13,8 +13,8 @@ import java.util.Set;
  */
 public interface GraphCrudRepo extends CrudRepository<GraphData, Long> {
 
-    @Query("SELECT gd FROM GraphData gd WHERE gd.location =?3 AND gd.timestamp BETWEEN ?1 AND ?2 AND gd.signalStrength =?4")
-    Set<GraphData> findAllByTimeAndLocationAndSignalStrength(Date startDate, Date endDate, String location, String signalStrength);
+    @Query("SELECT gd FROM GraphData gd WHERE gd.location =?3 AND gd.timestamp BETWEEN ?1 AND ?2 AND gd.signalStrength =?4 ORDER BY gd.timestamp ASC ")
+    Set<GraphData> findAllByTimeAndLocationAndSignalStrengthOrderByTimestampAsc(Date startDate, Date endDate, String location, String signalStrength);
 
     @Query("SELECT gd FROM GraphData gd WHERE gd.location =?1 AND gd.timestamp BETWEEN '2017-03-29 00:00:00' AND '2017-03-29 00:01:00' ")
     Set<GraphData> findAllByLocation(String location);
