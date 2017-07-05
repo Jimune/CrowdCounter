@@ -9,7 +9,6 @@
 <html>
 <head>
     <title>graphMaker</title>
-    <script src="/graphFunctions.js"></script>
     <link rel="stylesheet" href="/graphStyle.css" type="text/css">
     <img id="myImg"
          src="https://s-media-cache-ak0.pinimg.com/originals/9c/3f/5e/9c3f5e7411c638cb6c07253ed32a89f4.gif"
@@ -19,7 +18,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-
+<script src="/graphFunctions.js"></script>
 <div class="container">
     <form class="form-signin" id="form" method="post" action="/graphMaker">
         <label class="sr-only" for="location">Location: </label>
@@ -27,7 +26,7 @@
                onkeyup="fetchLocation()" required autofocus>
         <div class="list-group" id="datatable" style="z-index: 2; position: fixed;"></div>
         <label class="sr-only" for="date">Date: </label>
-        <input class="form-control bottom" type="text" id="date" name="date" placeholder="Date (yyyy-mm-dd)" required>
+        <input type="text" class="form-control bottom" name="date" id="date" placeholder="Date (yyyy-mm-dd)">
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Make graph!"
                onclick="setImageVisible('myImg',true)">
     </form>
