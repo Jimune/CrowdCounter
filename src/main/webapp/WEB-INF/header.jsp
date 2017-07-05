@@ -30,6 +30,7 @@
                         <li><a href="/tableMaker">Generate Table</a></li>
                     </ul>
                 </li>
+                <li role="presentation"><a href="presentation">Presentation</a></li>
             </c:if>
         </ul>
         <ul class="nav navbar-nav navbar-right">

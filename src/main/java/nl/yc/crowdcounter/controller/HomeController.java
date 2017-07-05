@@ -1,5 +1,6 @@
 package nl.yc.crowdcounter.controller;
 
+import nl.yc.crowdcounter.model.Accessibility;
 import nl.yc.crowdcounter.model.Permission;
 import nl.yc.crowdcounter.model.User;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,12 @@ public class HomeController {
     @RequestMapping("/")
     public String sendToIndex() {
         return "redirect:/index";
+    }
+
+    @RequestMapping("/presentation")
+    @Accessibility
+    public String loadPresentation() {
+        return "presentation";
     }
 
     @RequestMapping("/fake")
