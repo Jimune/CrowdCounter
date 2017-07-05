@@ -19,7 +19,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-
+<script src="/graphFunctions.js"></script>
 <div class="container">
     <form class="form-signin" id="form" method="post" action="/graphMaker">
         <label class="sr-only" for="location">Location: </label>
@@ -27,13 +27,11 @@
                onkeyup="fetchLocation()" required autofocus>
         <div class="list-group" id="datatable" style="z-index: 2; position: fixed;"></div>
         <label class="sr-only" for="date">Date: </label>
-        <input class="form-control bottom date-input"
-               type="date" pattern="yyyy-mm-dd"
-               min="2016-11-30" max="2017-06-29"
-               id="date" name="date" placeholder="Date (yyyy-mm-dd)" required>
+        <input type="text" class="form-control bottom" name="date" id="date" placeholder="Date (yyyy-mm-dd)">
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Make graph!"
                onclick="setImageVisible('myImg',true)">
     </form>
 </div>
+
 </body>
 </html>

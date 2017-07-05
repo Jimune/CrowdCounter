@@ -1,10 +1,11 @@
 package nl.yc.crowdcounter.util;
 
+import nl.yc.crowdcounter.model.GraphData;
+
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -63,7 +64,7 @@ public class Util {
 
     public static Date setNewTime(Date timeZone) {
         Date newTimeZone = null;
-        long ltime = timeZone.getTime() + 1 * 1 * 60 * 60 * 1000;
+        long ltime = timeZone.getTime() + 1 * 24 * 60 * 60 * 1000;
         newTimeZone = new Date(ltime);
         return newTimeZone;
     }
@@ -84,6 +85,44 @@ public class Util {
         } else {
             request.getSession().setAttribute("highhourmap", hourmap);
         }
+
     }
+
+    public static int getCurrentHours(Date date) {
+        Calendar c = GregorianCalendar.getInstance();
+        c.setTime(date);
+        return c.get(Calendar.HOUR_OF_DAY);
+    }
+
+    public static ArrayList<Integer> dissectData(Set<GraphData> strengthGroup) {
+        ArrayList<Integer> hourMapping = new ArrayList<>();
+        int count = 0;
+        int currentTime = 1;
+        int indexnr = 0;
+        for (GraphData gd : strengthGroup) {
+            if (getCurrentHours(gd.getTimestamp()) < currentTime) {
+                count++;
+                if (indexnr == strengthGroup.size() - 1) {
+                    hourMapping.add(count);
+                }
+            } else if (getCurrentHours(gd.getTimestamp()) == currentTime) {
+                hourMapping.add(count);
+                count = 0;
+                count++;
+                currentTime++;
+            } else {
+                do {
+                    hourMapping.add(count);
+                    count = 0;
+                    currentTime++;
+                } while (getCurrentHours(gd.getTimestamp()) > currentTime);
+
+            }
+            indexnr++;
+
+        }
+        return hourMapping;
+    }
+
 
 }

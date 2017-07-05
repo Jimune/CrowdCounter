@@ -1,26 +1,36 @@
 .carousel-inner {
     position: relative;
+    height: 300px;
 }
+
 
 .item.active {
     left: 20% !important;
+    top: 15% !important;
 }
 
 .item {
     left: 20% !important;
+    top: 15% !important;
 }
 
 .container {
     position: relative;
+
 }
 
 .carousel-caption {
     position: relative;
+
 }
 
 h1 {
-    margin-bottom: 6% !important;
-    margin-left: -40% !important;
+    font-family: "American Typewriter";
+    font-size: 40px;
+    color: #a5a0a3;
+    position: relative;
+    margin-left: -60%;
+    margin-top: -12% !important;
 }
 
 .lefty {
