@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<link rel="stylesheet" href="/homeScreenStyle.css" type="text/css">
+
 <!-- Carousel
 ================================================== -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -21,33 +23,27 @@
             <img class="first-slide"
                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9svdjYk1fJJHDuo0RI4NRfaA1yXUbNjSJNwp2GnGn5Nyi-ceB2Q"
                  alt="First slide">
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>Get more data from your customers</h1>
-                    <p></p>
-                </div>
+            <div class="carousel-caption">
+                <h1>Get more data from your customers</h1>
+                <p></p>
             </div>
         </div>
         <div class="item">
             <img class="second-slide"
                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3qHhOmFwxzMhismTKgjmZUkqisjveoT1JPw3-eWhYHmhAdj4g"
                  alt="Second slide">
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>Map out all the surrounded connections</h1>
-                    <p></p>
-                </div>
+            <div class="carousel-caption">
+                <h1>Map out all the surrounded connections</h1>
+                <p></p>
             </div>
         </div>
         <div class="item">
             <img class="third-slide"
                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAw_ZKcvN5OIJqfCbu6MiOWn00uBnNnTppsgk2jVq-bqrGgWk5AQ"
                  alt="Third slide">
-            <div class="container">
-                <div class="carousel-caption">
-                    <h1>Get in touch with your environment</h1>
-                    <p></p>
-                </div>
+            <div class="carousel-caption">
+                <h1>Get in touch with your environment</h1>
+                <p></p>
             </div>
         </div>
     </div>

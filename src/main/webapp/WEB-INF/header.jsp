@@ -26,7 +26,8 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"
                        role="button" aria-haspopup="true" aria-expanded="false">Graph<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/graphMaker">Create new graph</a></li>
+                        <li><a href="/graphMaker">Generate Graph</a></li>
+                        <li><a href="/tableMaker">Generate Table</a></li>
                     </ul>
                 </li>
             </c:if>

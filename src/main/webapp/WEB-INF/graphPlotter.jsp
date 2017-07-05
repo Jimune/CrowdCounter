@@ -20,7 +20,7 @@
 
 <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto;"></div>
 <%--<script src="/graphFunctions.js"></script>--%>
-<script>getData(${weakhourmap}, ${mediumhourmap}, ${highhourmap})</script>
+<script>getData('${location} on ${date}', ${weakhourmap}, ${mediumhourmap}, ${highhourmap})</script>
 
 </body>
 </html>

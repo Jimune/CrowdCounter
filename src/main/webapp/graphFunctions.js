@@ -1,6 +1,6 @@
 var chart;
 
-function getData(weakHourmap, mediumHourmap, highHourmap) {
+function getData(title, weakHourmap, mediumHourmap, highHourmap) {
     chart = Highcharts.chart('container', {
         /* chartheader info */
         chart: {
@@ -10,7 +10,7 @@ function getData(weakHourmap, mediumHourmap, highHourmap) {
             text: 'connected Devices over Time'
         },
         subtitle: {
-            text: 'location'
+            text: title
         },
 
         /* axis declaration */
@@ -63,8 +63,15 @@ function getData(weakHourmap, mediumHourmap, highHourmap) {
 }
 
 function setImageVisible(id, visible) {
-    var img = document.getElementById(id);
-    img.style.visibility = (visible ? 'visible' : 'hidden');
+    var location = document.getElementById('location');
+    var date = document.getElementById('date');
+    console.log(location);
+    console.log(date);
+    if (location.value.length > 0 && date.value.length > 0) {
+        console.log("inside");
+        var img = document.getElementById(id);
+        img.style.visibility = (visible ? 'visible' : 'hidden');
+    }
 }
 
 function fetchLocation() {
@@ -92,3 +99,4 @@ function fillSearch(fill) {
     document.getElementById("location").value = fill;
     document.getElementById("datatable").innerHTML = "";
 }
+

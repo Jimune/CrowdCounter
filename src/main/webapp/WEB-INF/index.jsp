@@ -4,7 +4,6 @@
 <html>
     <head>
         <title>Home</title>
-        <link rel="stylesheet" href="/homeScreenStyle.css" type="text/css">
     </head>
     <body>
         <jsp:include page="header.jsp"/>

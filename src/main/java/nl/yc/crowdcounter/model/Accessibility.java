@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 public @interface Accessibility {
 
-    boolean requireLogin() default false;
+    boolean requireLogin() default true;
     String[] requiredPermissions() default {};
 
 }
