@@ -176,3 +176,7 @@ body {
     height: 20%;
     max-height: 20%;
 }
+
+.date-input {
+    height: 44px !important;
+}

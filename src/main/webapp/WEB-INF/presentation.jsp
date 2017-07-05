@@ -4,23 +4,22 @@
 <html>
 <head>
     <title>Presentation</title>
-    <link rel="stylesheet" href="/reveal/css/reveal.css">
-    <link rel="stylesheet" href="/reveal/css/night.css" id="theme">
-    <link rel="stylesheet" href="/reveal/css/zenburn.css">
-    <script type="text/javascript" src="/reveal/highlight.js"></script>
+    <link rel="stylesheet" href="/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="/reveal.js/css/theme/league.css" id="theme">
+    <link rel="stylesheet" href="/reveal.js/lib/css/zenburn.css">
+    <script type="text/javascript" src="/reveal.js/plugin/highlight/highlight.js"></script>
 </head>
 <body>
 
 <div class="reveal default center" data-background-transition="fade">
     <div class="slides">
-        <section>
-            <h1>CrowdCounter</h1>
-            <h2>Yvo Romp & Jim Mulder</h2>
+        <section> <%-- Front slide --%>
+            <h2>CrowdCounter</h2>
+            <h3>Yvo Romp & Jim Mulder</h3>
         </section>
-        <section>
-            <section>
-                Some random data
-            </section>
+        <section> <%-- First slide;  --%>
+            <h2>Why</h2>
+            <section>Some random data</section>
         </section>
         <section>
             <section>random 1</section>
@@ -29,8 +28,8 @@
     </div>
 </div>
 
-<script src="../reveal/head.min.js"></script>
-<script src="../reveal/reveal.js"></script>
+<script src="/reveal.js/lib/js/head.min.js"></script>
+<script src="/reveal.js/js/reveal.js"></script>
 <script>
     // Full list of configuration options available here:
     // https://github.com/hakimel/reveal.js#configuration
