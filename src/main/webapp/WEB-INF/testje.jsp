@@ -70,31 +70,34 @@
             <img class="img-circle"
                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA2nn6OJWz4NqJvJkynffGaRXgvRN40dMl9C6B3mbpKyJsKX73Bw"
                  alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
-                vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
-                cursus magna.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <h2>Personal!</h2>
+            <p>One of the biggest mistakes that budding personal branders make is trying to appeal to everyone. Think
+                about the game of darts: You have to aim in order to hit the board. (If you let your darts go without
+                aiming them, you probably won’t be very popular.) If you hit the board, you score. And if your aim is
+                very good and you hit the bull’s eye, even better!</p>
+            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <img class="img-circle"
                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCPx6VIHeqQ-zwZg26RIpiBNVq6gp4d_D8TiJbzi3cJOGKQDdi"
                  alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras
-                mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <h2>Secure!</h2>
+            <p>Applications used to access Internet resources may contain security vulnerabilities such as memory safety
+                bugs or flawed authentication checks. The most severe of these bugs can give network attackers full
+                control over the computer. Most security applications and suites are incapable of adequate defense
+                against these kinds of attacks.</p>
+            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <img class="img-circle"
                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBhz2AG3w1cMeuKSP7niscI-NhB1UX2RdteZPnpCAFeKSB5PPB"
                  alt="Generic placeholder image" width="140" height="140">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <h2>Locate!</h2>
+            <p>Accurate indoor localization is becoming more important for Wi-Fi based devices due to the increased use
+                of social networking, health care monitoring, personal tracking, inventory control and other indoor
+                location-aware applications. Techniques have been proposed to merge the Wi-Fi traces with other data
+                sources such as geographical information and time constraints</p>
+            <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
@@ -107,9 +110,10 @@
         <div class="col-md-7">
             <h2 class="featurette-heading">First featurette heading. <span
                     class="text-muted">It'll blow your mind.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-                semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-                commodo.</p>
+            <p class="lead">The identity of the marketer and/or operator and details of where and how they may be
+                contacted should be given in the offer, so as to enable the consumer to communicate directly and
+                effectively with them. This information should be available as a permanent reference which the consumer
+                can keep, i.e. via a separate document offline, an online document or email.</p>
         </div>
         <div class="col-md-5">
             <img class="img-circle"
@@ -123,9 +127,13 @@
             <div class="lefty">
                 <h2 class="featurette-heading">Oh yeah, it's that good. <span
                         class="text-muted">See for yourself.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis
-                    euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus,
-                    tellus ac cursus commodo.</p>
+                <p class="lead">Direct Response Marketing is designed to generate an immediate response from consumers,
+                    where each consumer response (and purchase) can be measured, and attributed to individual
+                    advertisements.This form of marketing is differentiated from other marketing approaches, primarily
+                    because there are no intermediaries such as retailers between the buyer and seller, and therefore
+                    the buyer must contact the seller directly to purchase products or services.
+
+                </p>
             </div>
         </div>
         <div class="col-md-5 col-md-pull-7">
@@ -140,9 +148,12 @@
     <div class="row featurette">
         <div class="col-md-7">
             <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod
-                semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus
-                commodo.</p>
+            <p class="lead">Mobile Applications: Smartphone-based mobile apps contain several types of messages. Push
+                Notifications are direct messages sent to a user either automatically or as part of a campaign. They
+                include transactional, marketing, geo-based, and more. Rich Push Notifications are full HTML Push
+                Notifications. Mobile apps also contain Interactive ads that appear inside the mobile application or
+                app; Location-Based Marketing: marketing messages delivered directly to a mobile device based on the
+                user's location; QR Codes (quick-response barcodes).</p>
         </div>
         <div class="col-md-5">
             <img class="img-circle"

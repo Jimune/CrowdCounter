@@ -8,7 +8,4 @@
     <body>
         <jsp:include page="header.jsp"/>
         <jsp:include page="testje.jsp"/>
-
-
-
 </html>

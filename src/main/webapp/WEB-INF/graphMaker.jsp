@@ -12,7 +12,7 @@
     <script src="/graphFunctions.js"></script>
     <link rel="stylesheet" href="/graphStyle.css" type="text/css">
     <img id="myImg"
-         src="https://digitalsynopsis.com/wp-content/uploads/2016/06/loading-animations-preloader-gifs-ui-ux-effects-28.gif"
+         src="https://s-media-cache-ak0.pinimg.com/originals/9c/3f/5e/9c3f5e7411c638cb6c07253ed32a89f4.gif"
          style="visibility: hidden;">
 
 
