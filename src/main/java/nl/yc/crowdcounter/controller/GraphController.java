@@ -104,49 +104,6 @@ public class GraphController {
         return "tablePlotter";
     }
 
-//    private void generateGraphAndTableData(HttpServletRequest request) {
-//        String location = request.getParameter("location");
-//        String date = request.getParameter("date");
-//
-//        if (date == null || date.isEmpty() ||
-//                location == null || location.isEmpty()) return;
-//
-//        Date beginDate = Util.beginDate(date);
-//        Date oldBeginDate = beginDate;
-//        Date endDate = Util.setNewTime(beginDate);
-//        Date oldEndDate = endDate;
-//
-//        String signalStrength = "";
-//        int totalcount = 0;
-//        int count;
-//
-//        for (int i = 0; i < 3; i++) {
-//            ArrayList<Integer> hourMapping = new ArrayList<>();
-//            beginDate = oldBeginDate;
-//            endDate = oldEndDate;
-//            signalStrength = Util.setNewString(i);
-//
-//            for (int j = 0; j < 24; j++) {
-//                count = 0;
-//                Set<GraphData> found = graphCrudRepo.findAllByTimeAndLocationAndSignalStrength(beginDate, endDate, location, signalStrength);
-//
-//                for (GraphData gd : found) {
-//                    count++;
-//                    totalcount++;
-//                }
-//
-//                hourMapping.add(count);
-//                beginDate = Util.setNewTime(beginDate);
-//                endDate = Util.setNewTime(endDate);
-//            }
-//
-//            Util.setRightName(request, hourMapping, i);
-//        }
-//
-//        request.getSession().setAttribute("date", date);
-//        request.getSession().setAttribute("location", location);
-//    }
-
     private void generateGraphAndTableData(HttpServletRequest request) {
         String location = request.getParameter("location");
         String date = request.getParameter("date");

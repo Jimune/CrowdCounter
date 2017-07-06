@@ -18,24 +18,66 @@
             <h3>Yvo Romp & Jim Mulder</h3>
         </section>
 
-        <section> <%-- First slide;  --%>
-            <h2>Waarom</h2>
-            <section>
+        <section> <%-- First slide --%>
+            <h2>Over ons</h2>
+            <h3>Hoe zijn we hier terecht gekomen</h3>
+        </section>
+
+        <section> <%-- Second slide  --%>
+            <section> <%-- Top slide --%>
+                <h2>Waarom</h2>
                 <ul>
-                    <li>traineeship</li>
-                    <li>intresse</li>
+                    <li>Traineeship</li>
+                    <li>Interesse</li>
+                    <li></li>
+                </ul>
+            </section>
+
+            <section> <%-- Middle slide --%>
+                <h2>Hoe</h2>
+                <ul>
+                    <li>Geduld</li>
+                    <li>Git</li>
+                    <li>IntelliJ</li>
+                    <li>Frustratie</li>
+                    <li>Koffie</li>
+                    <li></li>
+                </ul>
+            </section>
+
+            <section> <%-- Bottom slide --%>
+                <h2>Wat</h2>
+                <ul>
+                    <li>CrowdCounter</li>
+                    <li>Front-end</li>
+                    <li>Back-end</li>
+                    <li></li>
                 </ul>
             </section>
         </section>
 
-        <section> <%-- Second slide --%>
-            <h2>Hoe</h2>
-            <section>random 1</section>
+        <section> <%-- Third slide --%>
+            <section> <%-- Top slide --%>
+                <h2>Wat ging goed</h2>
+            </section>
         </section>
 
-        <section> <%-- Third slide --%>
-            <h2>Wat</h2>
-            <section>random 1</section>
+        <section> <%-- Fourth slide --%>
+            <section> <%-- Top slide --%>
+                <h2>Wat ging niet goed</h2>
+            </section>
+        </section>
+
+        <section> <%-- Fifth slide --%>
+            <h2>UML</h2>
+            <section> <%-- Top slide --%>
+                <img src="/diagram.png" style="transform: translateY(5%);">
+            </section>
+
+            <section> <%-- Bottom slide --%>
+                <img src="/diagram_short.png"
+                     style="transform: translateX(-11.5%) translateY(5%); max-width: 130%; max-height: 130%; width: 130%; height: 130%;">
+            </section>
         </section>
     </div>
 </div>

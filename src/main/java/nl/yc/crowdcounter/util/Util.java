@@ -64,14 +64,14 @@ public class Util {
 
     public static Date setNewTime(Date timeZone) {
         Date newTimeZone = null;
-        long ltime = timeZone.getTime() + 1 * 24 * 60 * 60 * 1000;
+        long ltime = timeZone.getTime() + 24 * 60 * 60 * 1000;
         newTimeZone = new Date(ltime);
         return newTimeZone;
     }
 
     public static String setNewString(int ssid) {
         if (ssid == 0) {
-            return "Weak Strenght";
+            return "Weak Strength";
         } else if (ssid == 1) {
             return "Medium Strength";
         } else return "High Strength";
@@ -85,7 +85,6 @@ public class Util {
         } else {
             request.getSession().setAttribute("highhourmap", hourmap);
         }
-
     }
 
     public static int getCurrentHours(Date date) {
