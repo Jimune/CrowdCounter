@@ -23,14 +23,16 @@
             <section>
                 <ul>
                     <li>traineeship</li>
-                    <li>intresse</li>
+                    <li>interesse</li>
                 </ul>
             </section>
         </section>
 
         <section> <%-- Second slide --%>
             <h2>Hoe</h2>
-            <section>random 1</section>
+            <section>concept</section>
+            <section>UML</section>
+            <section>demo</section>
         </section>
 
         <section> <%-- Third slide --%>
