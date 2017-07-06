@@ -27,9 +27,8 @@
             <section> <%-- Top slide --%>
                 <h2>Waarom</h2>
                 <ul>
-                    <li>Traineeship</li>
-                    <li>Interesse</li>
-                    <li></li>
+                    <li>Uitdagend project</li>
+                    <li>Nieuwe dingen leren</li>
                 </ul>
             </section>
 
@@ -38,10 +37,9 @@
                 <ul>
                     <li>Geduld</li>
                     <li>Git</li>
+                    <li>Teamwork</li>
                     <li>IntelliJ</li>
-                    <li>Frustratie</li>
-                    <li>Koffie</li>
-                    <li></li>
+                    <li>Nieuwe technieken en frameworks</li>
                 </ul>
             </section>
 
@@ -51,24 +49,53 @@
                     <li>CrowdCounter</li>
                     <li>Front-end</li>
                     <li>Back-end</li>
-                    <li></li>
+                    <li>Totaal oplossing</li>
                 </ul>
             </section>
         </section>
 
         <section> <%-- Third slide --%>
             <section> <%-- Top slide --%>
+                <h2>Wat ging minder goed</h2>
+                <ul>
+                    <li>Oorspronkelijk doel
+                        <ul>
+                            <li>Raspberry Pi</li>
+                            <li>Arduino's</li>
+                        </ul>
+                    </li>
+                    <li>AngularJS</li>
+                    <li>Implementatie Query's</li>
+                    <li>Git</li>
+                </ul>
+            </section>
+
+            <section> <%-- Middle slide --%>
                 <h2>Wat ging goed</h2>
+                <ul>
+                    <li>Samenwerking
+                        <ul>
+                            <li>Info delen</li>
+                            <li>Layout bepalen</li>
+                        </ul>
+                    </li>
+                    <li>Doel bijstellen</li>
+                    <li>Overzicht</li>
+                    <li>Voorbereidend werk</li>
+                </ul>
+            </section>
+
+            <section> <%-- Bottom slide --%>
+                <h2>Bijkomstigheden</h2>
+                <ul>
+                    <li>Eerste week van de casus</li>
+                    <li>Basis uitleg</li>
+                    <li>Wifi "Sniffer"</li>
+                </ul>
             </section>
         </section>
 
         <section> <%-- Fourth slide --%>
-            <section> <%-- Top slide --%>
-                <h2>Wat ging niet goed</h2>
-            </section>
-        </section>
-
-        <section> <%-- Fifth slide --%>
             <h2>UML</h2>
             <section> <%-- Top slide --%>
                 <img src="/diagram.png" style="transform: translateY(5%);">
@@ -78,6 +105,57 @@
                 <img src="/diagram_short.png"
                      style="transform: translateX(-11.5%) translateY(8%); max-width: 130%; max-height: 130%; width: 130%; height: 130%;">
             </section>
+        </section>
+
+        <section>
+            <h2>Demo</h2>
+        </section>
+
+        <section>
+            <h2>Jim</h2>
+            <section>
+                <h3>Security</h3>
+                <pre><code class="java">@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface Accessibility {
+
+    boolean requireLogin() default true;
+    String[] requiredPermissions() default {};
+
+}</code></pre>
+            </section>
+            <section>
+                <h3>Security</h3>
+                <pre><code class="java" style="transform: translateX(-5%); width: 110%;">public class PermissionFilter extends HandlerInterceptorAdapter {
+
+    @Autowired
+    UserCrudRepo repo;
+
+    @Override
+    public boolean preHandle(HttpServletRequest request,
+                    HttpServletResponse response, Object handler) {
+        HandlerMethod hm = (HandlerMethod) handler;
+        Method m = hm.getMethod();
+        Accessibility a = m.getDeclaredAnnotation(Accessibility.class);
+
+        if (a != null) {
+            if (a.requireLogin()) {
+                HttpSession session = request.getSession(false);</code></pre>
+            </section>
+            <section></section>
+            <section></section>
+        </section>
+
+        <section>
+            <h2>Yvo</h2>
+            <section></section>
+            <section></section>
+            <section></section>
+            <section></section>
+        </section>
+
+        <section>
+            <h2>Vragen</h2>
         </section>
     </div>
 </div>

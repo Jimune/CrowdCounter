@@ -20,7 +20,7 @@ import java.util.Set;
 /**
  * Created by jim on 6/26/17.
  */
-public class PermissionFilter extends HandlerInterceptorAdapter {
+public class SessionFilter extends HandlerInterceptorAdapter {
 
     @Autowired
     UserCrudRepo repo;
