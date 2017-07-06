@@ -56,7 +56,7 @@
 
         <section> <%-- Third slide --%>
             <section> <%-- Top slide --%>
-                <h2>Wat ging minder goed</h2>
+                <h2>Leerpunten</h2>
                 <ul>
                     <li>Oorspronkelijk doel
                         <ul>
