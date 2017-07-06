@@ -76,7 +76,7 @@
 
             <section> <%-- Bottom slide --%>
                 <img src="/diagram_short.png"
-                     style="transform: translateX(-11.5%) translateY(5%); max-width: 130%; max-height: 130%; width: 130%; height: 130%;">
+                     style="transform: translateX(-11.5%) translateY(8%); max-width: 130%; max-height: 130%; width: 130%; height: 130%;">
             </section>
         </section>
     </div>
