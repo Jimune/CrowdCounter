@@ -65,12 +65,11 @@
                         </ul>
                     </li>
                     <li>AngularJS</li>
-                    <li>Implementatie Query's</li>
                     <li>Git</li>
                 </ul>
             </section>
 
-            <section> <%-- Middle slide --%>
+            <section> <%-- Bottom slide --%>
                 <h2>Wat ging goed</h2>
                 <ul>
                     <li>Samenwerking
@@ -82,15 +81,6 @@
                     <li>Doel bijstellen</li>
                     <li>Overzicht</li>
                     <li>Voorbereidend werk</li>
-                </ul>
-            </section>
-
-            <section> <%-- Bottom slide --%>
-                <h2>Bijkomstigheden</h2>
-                <ul>
-                    <li>Eerste week van de casus</li>
-                    <li>Basis uitleg</li>
-                    <li>Wifi "Sniffer"</li>
                 </ul>
             </section>
         </section>
@@ -108,10 +98,6 @@
         </section>
 
         <section>
-            <h2>Demo</h2>
-        </section>
-
-        <section>
             <h2>Jim</h2>
             <section>
                 <h3>Security</h3>
@@ -124,9 +110,15 @@ public @interface Accessibility {
 
 }</code></pre>
             </section>
+
             <section>
-                <h3>Security</h3>
-                <pre><code class="java" style="transform: translateX(-5%); width: 110%;">public class PermissionFilter extends HandlerInterceptorAdapter {
+                <pre><code class="java" style="transform: translateX(-8.5%); width: 120%;">@RequestMapping(value = "/admin.modifyUser.{id}", method = RequestMethod.GET)
+@Accessibility(requiredPermissions = {"modify_user"})
+public String modifyUserSelectedView(Model model, @PathVariable String id) {</code></pre>
+            </section>
+
+            <section>
+                <pre><code class="java" style="transform: translateX(-5%); width: 110%;">public class SessionFilter extends HandlerInterceptorAdapter {
 
     @Autowired
     UserCrudRepo repo;
@@ -142,16 +134,25 @@ public @interface Accessibility {
             if (a.requireLogin()) {
                 HttpSession session = request.getSession(false);</code></pre>
             </section>
-            <section></section>
-            <section></section>
         </section>
 
         <section>
             <h2>Yvo</h2>
-            <section></section>
-            <section></section>
-            <section></section>
-            <section></section>
+            <section>
+                <h3>Query's</h3>
+                <pre><code class="java" style="transform: translateX(-11.5%); width: 130%;">@Query("SELECT gd FROM GraphData gd WHERE gd.location =?3 AND gd.timestamp
+    BETWEEN ?1 AND ?2 AND gd.signalStrength =?4 ORDER BY gd.timestamp ASC ")
+Set&lt;GraphData&gt; findAllByTimeAndLocationAndSignalStrengthOrderByTimestampAsc(
+    Date startDate, Date endDate, String location, String signalStrength);
+
+@Query("SELECT DISTINCT gd.location FROM GraphData gd WHERE gd.location
+    LIKE CONCAT('%', ?1, '%')")
+Set&lt;String&gt; findDistinctByLocationContaining(String location);</code></pre>
+            </section>
+        </section>
+
+        <section>
+            <h2>Demo</h2>
         </section>
 
         <section>
